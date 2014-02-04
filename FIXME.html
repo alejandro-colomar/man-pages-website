@@ -1,0 +1,94 @@
+<html>
+<head>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+<title>
+FIXMEs for man-pages
+</title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+<a href="./contributing.html">contributing</a> | 
+<a href="./reporting_bugs.html">bugs</a> | 
+<a href="./patches.html">patches</a> | 
+<a href="./download.html">download</a> &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+
+<h1>Repairing pages marked "FIXME"</h1>
+
+<p>
+  Grepping the source of the pages in
+  <em>man-pages</em> will show various places where
+  pages are marked with the string "FIXME".
+  There is also a shell script
+  (<span class="pathname">scripts/FIXME_list.sh</span>)
+  that can be used to obtain a list of FIXMEs
+  in the man page sources:
+  <div class="shell">
+  $ <strong>cd man-pages</strong>
+  <br>
+  $ <strong>sh scripts/FIXME_list.sh .</strong>
+  </div>
+</p>
+
+<p>
+  The presence of a FIXME usually indicates that someone has
+  noticed that some information on the page is incorrect or
+  incomplete, but has not had the time/knowledge to fix the problem.
+  (Sometimes a FIXME relates to a kernel or glibc bug report that is
+  awaiting resolution, and it may be sufficient to check if the bug
+  has been resolved and then, if necessary,
+  provide a suitable write-up on the page.)
+</p>
+
+<p>
+  If you know how to fix the problem, then please send a patch.
+  However, note that some of the FIXME markings are associated with
+  problems that are quite difficult: you need to ensure that you are
+  knowledgeable on the relevant point(s), or you need to be willing to
+  invest the time to become knowledgeable (by reading kernel or
+  [g]libc source files and/or writing suitable test programs).
+</p>
+
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>

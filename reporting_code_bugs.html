@@ -1,0 +1,264 @@
+<html>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+<head>
+<title>
+Reporting bugs in the kernel and glibc
+</title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+<a href="./contributing.html">contributing</a> | 
+<a href="./reporting_bugs.html">bugs</a> | 
+<a href="./patches.html">patches</a> | 
+<a href="./download.html">download</a> &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+
+<h1>Reporting bugs in the kernel and glibc</h1>
+
+    <p>
+        If, rather than a documentation bug,
+        you think you've found a bug in a system call or library function,
+        then you should report a bug to either the kernel developers
+        or to the glibc developers.
+        A few hints about reporting bugs in each case are given below.
+    </p>
+
+<h2>Reporting library function (and other glibc) bugs</h2>
+
+    <p>
+        If you are reasonably sure that your bug is not a result of
+        distribution-specific modifications to glibc, then you can
+        submit a bug to the
+        <a href="http://sources.redhat.com/bugzilla/">glibc bugzilla</a>.
+        If the glibc bug is distribution-specific,
+        then raise a report in your distributor's bug-reporting facility:
+        if necessary, the distributor will push the bug upstream to the
+        glibc maintainers.
+        Take a look
+        <a href="http://www.gnu.org/software/libc/bugs.html">here</a>
+        for more details.
+    </p>
+
+<h2>Reporting system call (and other kernel) bugs</h2>
+
+    <p>
+        There are two ways of reporting bugs in kernel interfaces.
+        You can either send an email to the Linux Kernel Mailing List (LKML, 
+        <a href="mailto:linux-kernel@vger.kernel.org">linux-kernel@vger.kernel.org</a>)
+        or raise a bug in the
+        <a href="http://bugzilla.kernel.org/">kernel bugzilla</a>.
+        If you know that the kernel feature is currently being actively worked on,
+        then reporting via LKML may be the better of the two options.
+    </p>
+    <p>
+        In either case,
+        two things are likely to very much improve your chances of
+        seeing the bug properly resolved:
+    </p>
+    <ul>
+        <li>
+            Provide as much useful information as possible when reporting the bug.
+            <br>
+            <br>
+        </li>
+        <li>CC relevant people on the bug report.
+        </li>
+    </ul>
+
+<h3>Providing a useful bug report</h3>
+
+    <p>
+        Whether you are reporting a bug via
+        LKML or via the kernel bugzilla, first take a look at
+        <a href="http://www.kernel.org/pub/linux/docs/lkml/reporting-bugs.html">http://www.kernel.org/pub/linux/docs/lkml/reporting-bugs.html</a> for some details
+        on how to report bugs.
+    </p>
+    <p>
+        Various things will help improve your bug report,
+        and its chances of getting resolved in a timely fashion:
+    </p>
+    <ul>
+        <li>
+            Provide a precise description of how to reproduce the problem
+            (possibly including shell session logs, contents of relevant
+            log files, etc.)
+            This description may include a test program,
+            which should be as simple as possible in order to demonstrate the problem.
+            (If a kernel developer has doubts about
+            whether the problem is in the kernel or in your test program,
+            then they are likely to assume the latter, both because it is often true,
+            and because there are plenty of other calls on most developers' time,
+            and checking a test program for bugs probably has low priority.)
+            <br>
+            <br>
+        </li>
+        <li>
+            If possible, provide information about which kernel versions are or
+            are not affected by the bug.
+            <br>
+            <br>
+        </li>
+        <li>
+            Provide a description of why the bug is important
+            (not just to you, but to others).
+        </li>
+    </ul>
+
+<h3>CCing relevant people</h3>
+
+    <p>
+        <strong>IMPORTANT</strong>:
+        Most kernel developers do <strong>not</strong> read every message that
+        gets sent to LKML or monitor every bug report submitted to the bugzilla.
+        This means that if you don't CC relevant developers on your bug report,
+        then you will be relying on the fact that someone else pushes the bug
+        in the direction of the relevant developer or maintainer.
+        This is likely to take time, and may not happen at all
+        (especially for reports submitted via LKML).
+        So, for best results you should identify
+        (all of) the people that should be CCed.
+    </p>
+    <blockquote>
+    <blockquote>
+        Be generous in your CC list, but note that while Linus Torvalds is at
+        some level responsible everything that goes into the kernel,
+        and Andrew Morton is likewise connected with much that passes
+        onto Linus, <em>indiscriminately</em> adding these two to your CC list
+        is not far removed from spamming; avoid doing that.
+    </blockquote>
+    </blockquote>
+    <p>
+        Identifying the right developers to CC isn't always straightforward,
+        but here are some suggestions that may help:
+    </p>
+
+    <ul>
+        <li>
+            Look in the MAINTAINERS file at the root of the kernel source tree.
+            to see if you can identify the maintainer(s) who are relevant
+            for the kernel 
+            (An online version of the MAINTAINERS file is
+            <a href="http://lxr.linux.no/linux//MAINTAINERS">here</a>.)
+            <br>
+            <br>
+        </li>
+        <li>
+            Try to determine the kernel source file(s) that may
+            be relevant to your bug (e.g., perhaps doing a
+            <span class="cmd">grep -r</span>
+            of the kernel source tree to find the file that implements the
+            system call that you think is buggy).
+            <br>
+            <br>
+            Having found that source file, try to work out who
+            has actively worked on it, especially recently.
+            Check the source file to see if there are developer email
+            addresses at the top of it.
+            Look at
+            <a href="http://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git;a=tree">Linus's Git tree</a>
+            to see which developers have made changes to the file.
+            <br>
+            <br>
+        </li>
+    
+        <li>
+            Grep
+            <a href="http://www.kernel.org/pub/linux/kernel/v3.0/">recent kernel ChangeLogs</a>
+            to see who made changes that may be relevant to your bug.
+            <br>
+            <br>
+        </li>
+
+        <li>
+            Search LKML archives
+            (e.g., <a href="http://dir.gmane.org/gmane.linux.man">gmane</a>
+            and
+            <a href="http://marc.info/?l=linux-man">MARC</a>)
+            to look for email messages that look relevant to your bug.
+            Authors of some of those messages may be useful to CC.
+            <br>
+            <br>
+        </li>
+
+        <li>
+            If the bug relates to the kernel-userspace interface provided
+            by a system call, then CC
+            <span class="email">mtk.manpages@gmail.com</span>
+            and
+            <span class="email">linux-man@vger.kernel.org</span>.
+            This will allow the bug to be documented in <em>man-pages</em>,
+            if that seems necessary.
+        </li>
+    </ul>
+
+<h3>No-one responded to my bug report!</h3>
+    <p>
+        If you reported a bug, and no-one responds, this may be because:
+    </p>
+    <ul>
+        <li>
+            The relevant developers don't know about the bug.
+            You need to CC the relevant developers by adding them to the
+            bugzilla report, or resubmitting the bug-report email to LKML with
+            the relevant developers CCed.
+            <br>
+            <br>
+        </li>
+        <li>
+            The bug report did not contain enough useful information
+            to enable the problem to be understood and replicated.
+            Add that to the bug report, or a resubmitted email to LKML.
+            <br>
+            <br>
+        </li>
+        <li>
+            No-one has had the time work on the bug, perhaps because it
+            it is not thought to be important enough.
+            If you believe the bug <em>is</em> important (not just to you,
+            but to others), then you need to explain why.
+        </li>
+    </ul>
+
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>

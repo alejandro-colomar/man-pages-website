@@ -1,0 +1,189 @@
+<html>
+<head>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+<title>
+Contributing to the Linux man-pages project
+</title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+contributing | 
+<a href="./reporting_bugs.html">bugs</a> | 
+<a href="./patches.html">patches</a> | 
+<a href="./download.html">download</a> &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+
+<h1>Contributing to the Linux <em>man-pages</em> project</h1>
+
+<p>
+  The following notes are written for people who want to help with
+  work on the Linux <em>man-pages</em> package.
+</p>
+
+<p>
+  To begin with, read
+  <span class=manpage><a href="http://man7.org/linux/man-pages/man7/man-pages.7.html">man-pages(7)</a></span>
+  for information about conventions that should
+  be used in man pages for the <em>man-pages</em> package.
+  You might also find it useful to look at the notes on
+  <a href="maintaining.html">maintaining</a> <em>man-pages</em>.
+</p>
+
+<p>
+  You can help in the following ways:
+</p>
+
+
+<ul>
+
+  <li>
+    Send in
+    <a href="reporting_bugs.html">bug reports</a>
+    about problems in existing pages.
+    <br>
+    <br>
+  </li>
+  
+  <li>
+    <a href="patches.html">Write patches</a>
+    that improve existing pages.
+    <br>
+    <br>
+  </li>
+  
+  <li>
+    Contribute new pages (take a look at the list of
+    <a href="missing_pages.html">missing pages</a>),
+    under a
+    <a href="licenses.html">free license</a>.
+    <br>
+    <br>
+  
+  <li>
+    <a href="FIXME.html">Grep for the string "FIXME" in existing pages</a>
+    and
+    <a href="patches.html">write patches</a> to fix the problems.
+    <br>
+    <br>
+  </li>
+  
+  <li>
+    Work on <a href="https://bugzilla.kernel.org/buglist.cgi?query_format=advanced&short_desc_type=allwordssubstr&short_desc=&cf_tree=Mainline&product=Documentation&component=man-pages&long_desc_type=substring&long_desc=&cf_kernel_version_type=allwordssubstr&cf_kernel_version=&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&emailassigned_to1=1&emailtype1=substring&email1=&emailassigned_to2=1&emailreporter2=1&emailcc2=1&emailtype2=substring&email2=&bugidtype=include&bug_id=&chfieldfrom=&chfieldto=Now&chfieldvalue=&cmdtype=doit&order=Reuse+same+sort+as+last+time&field0-0-0=noop&type0-0-0=noop&value0-0-0=">open bugs in the bugzilla</a>.
+    <br>
+    <br>
+  </li>
+  <li>
+    If you notice that a new release of the Linux kernel or glibc
+    adds a new interface or changes an existing interface, then
+    <a href="reporting_bugs.html">report a bug</a>
+    to ensure that the change gets documented.
+    (Interfaces include not just system calls and library functions
+    but also
+    <span class="pathname">/proc</span> files,
+    <span class="func">ioctl(2)</span> operations,
+    <span class="func">netlink</span> operations,
+    and so on.)
+    <br>
+    <br>
+  </li>
+  
+  <li>
+    Provide input on, or assistance with, the tasks listed on the
+    <a href="todo.html">TODO</a> page.
+    <br>
+    <br>
+  </li>
+  
+  <li>
+    Ask the <em>man-pages</em> maintainer to add you to the
+    (manually maintained) distribution list of people who receive
+    notification of new <em>man-pages</em> releases,
+    and review the changes that have occurred during a release (read the
+    changelog and/or do a
+    <span class="cmd">diff -ruN</span>
+    between the directory trees for the current and previous releases).
+    <br>
+    <br>
+  </li>
+  
+  <li>
+    Subscribe to the list
+    <span class="email">linux-man@vger.kernel.org</span>
+    and participate in the discussion of work on <em>man-pages</em>.
+    To subscribe to this list, send a message to
+    <span class="email">majordomo@vger.kernel.org</span>
+    with the following <em>body</em>:
+    <pre>subscribe linux-man</pre>
+    Searchable archives of this list can be found on
+    <a href="http://dir.gmane.org/gmane.linux.man">gmane</a>
+    and
+    <a href="http://marc.info/?l=linux-man">MARC</a>.
+    <br>
+    <br>
+  </li>
+  
+    <li>
+        Subscribe to the
+        <a href="linux-api-ml.html">linux-api mailing list</a>
+        (<span class="email">linux-api@vger.kernel.org</span>),
+	a list where (consientious) kernel developers CC patches
+	that change the kernel API.
+	This provides a "heads up" on changes that may need documenting
+	in manual pages.
+        To subscribe, send a message containing the
+        following <em>body</em> to
+        <span class="email">majordomo@vger.kernel.org</span>:
+    </li>
+
+    <pre>    subscribe linux-api </pre>
+
+  <li>
+    Review this website and suggest improvements to the design, formatting,
+    and HTML usage.  (Send mail to
+    <span class="email">mtk.manpages@gmail.com</span>.)
+  </li>
+</ul>
+  
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>

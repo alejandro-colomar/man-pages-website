@@ -1,0 +1,176 @@
+<html>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+<head>
+<title>
+What version of man-pages do I have?
+</title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+<a href="./contributing.html">contributing</a> | 
+<a href="./reporting_bugs.html">bugs</a> | 
+<a href="./patches.html">patches</a> | 
+<a href="./download.html">download</a> &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+
+<h1>What version of <em>man-pages</em> do I have?</h1>
+
+<p>
+  When making bug reports,
+  please specify what version of <em>man-pages</em> you are using.
+  (To make my life easier still, you could
+  <a href="http://www.kernel.org/pub/linux/docs/man-pages/">download</a>
+  the latest version of the <em>man-pages</em> tarball,
+  or look in the
+  <a href="http://man7.org/linux/man-pages/index.html">online pages</a>
+  and check if the bug is still present.)
+</p>
+
+<p>
+  Since <em>man-pages-2.69</em>, you can see what version of
+  <em>man-pages</em> a page comes from by looking in the COLOPHON
+  section at the end of the page.
+</p>
+
+<p>
+  If your system has an older version of
+  <em>man-pages</em> then you can determine the version as
+  described below.
+  By way of example, here's how to find the version of
+  <em>man-pages</em> containing the
+  <span class="man-page">chown(2)</span>
+  man page.
+</p>
+
+
+<h3>RPM-based distributions</h3>
+
+<p>
+  On an RPM-based distribution (e.g., SUSE, Red Hat, Mandriva),
+  use the following:
+</p>
+<pre class="shell">
+$ <strong>rpm -qf $(man -w </strong><em>&lt;section&gt; &lt;page-name&gt;</em><strong>)</strong>
+</pre>
+<p>
+  For example:
+</p>
+<pre class="shell">
+$ <strong>rpm -qf $(man -w 2 chown)</strong>
+man-pages-2.41-11
+</pre>
+<p>
+  If you do not see the string "man-pages" in the output,
+  then the page you are looking at is not part of <em>man-pages</em>,
+  and you need to look
+  <a href="man_pages_other.html">here</a>.
+</p>
+
+<h3>Debian-based distributions</h3>
+
+<p>
+  On a Debian-based distribution (e.g., Debian, Knoppix, Ubuntu), we can use
+  <span class="cmd">dpkg</span> command:
+</p>
+
+<pre class="shell">
+$ <strong>dpkg -S $(man -w </strong><em>&lt;section&gt; &lt;page-name&gt;</em><strong>)</strong>
+</pre>
+
+<p>
+  This should print a line that contains the string "manpages" or "manpages-dev".
+  If it does not, then you need to look
+  <a href="man_pages_other.html">here</a>.
+</p>
+
+<p>
+  The <span class="cmd">dpkg -p</span> command can then be used
+  to find out the upstream version of <em>man-pages</em> from which the
+  Debian "manpages" or "manpages-dev" package has been taken.
+  For example:
+</p>
+
+<pre class="shell">
+$ <strong>dpkg -S $(man -w 2 chown)</strong>
+manpages-dev: /usr/share/man/man2/chown.2.gz
+$ <strong>dpkg -p manpages-dev | grep Version</strong>
+Version: 2.39-1
+</pre>
+
+<h3>Gentoo</h3>
+
+<p>
+  On Gentoo, we can use the
+  <span class="cmd">equery belongs</span>
+  command to do similar:
+</p>
+<pre class="shell">
+$ <strong>equery belongs $(man -w </strong><em>&lt;section&gt; &lt;page-name&gt;</em><strong>)</strong>
+</pre>
+
+<p>
+  For example:
+</p>
+
+<pre class="shell">
+$ <strong>equery belongs $(man -w 2 chown)</strong>
+sys-apps/man-pages-2.63
+</pre>
+<p>
+  If you do not see the string "man-pages" in the output,
+  then the page you are looking at is not part of <em>man-pages</em>,
+  and you need to look
+  <a href="man_pages_other.html">here</a>.
+</p>
+
+
+<h3>Other distributions</h3>
+
+<p>
+  (FIXME: add instructions for doing the equivalent of the above on
+  distributions that use other schemes.)
+</p>
+
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>

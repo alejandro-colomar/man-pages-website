@@ -1,0 +1,78 @@
+h1 { 
+     color : black;
+}
+h2 { 
+     color : black;
+}
+h3 { 
+     color : darkred;
+}
+/*
+p em { color: darkblue }
+table em { color: darkblue }
+li em { color: darkblue }
+*/
+.code {
+    	font-family: monospace, courier;
+	color: #004000;
+/*
+	font-size: 22px
+*/
+}
+.code strong { color: darkblue }
+
+.shell {
+    	font-family: monospace, courier ;
+	color: #004000;
+	margin-left: 40px;
+}
+.shell strong {
+   	color: #007000;
+	font-weight: bold;
+}
+.shell em {
+	color: #000080
+}
+
+.manpage {	
+	font-style: italic;
+	color: darkblue;
+}
+
+.email {	
+   	font-family: monospace, courier;
+	color: darkgreen;
+}
+
+.func {	
+	font-style: italic;
+	color: darkgreen;
+/*
+   	font-family: monospace, courier;
+*/
+}
+.cmd {
+    	font-family: monospace, courier;
+	color: darkgreen;
+}
+
+pre {
+    	background-color: #f0f0f0;
+    	font-family: monospace, courier;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: darkgreen;
+        border: 1px solid #44BB44;
+}
+
+.filename {
+    	font-family: monospace, courier;
+/*
+	color: blue;
+	font-weight: bold;
+*/
+}
+
+.filename strong { color: green }

@@ -1,0 +1,223 @@
+<html>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+<head>
+<title>
+Licenses for manual pages
+</title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+<a href="./contributing.html">contributing</a> | 
+<a href="./reporting_bugs.html">bugs</a> | 
+<a href="./patches.html">patches</a> | 
+<a href="./download.html">download</a> &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+
+<h1>Licenses for <em>man-pages</em></h1>
+
+<p>
+  All submissions to <em>man-pages</em> must be licensed using a
+  a license that permits the page to be freely redistributed and modified.
+  Include that license or a reference to it,
+  in the source code of the man page.
+</p>
+
+<p>
+  There are many such licenses, but in the interests of minimizing
+  the number of licenses in <em>man-pages</em>,
+  it is preferred that you use one of the following:
+</p>
+
+<ul>
+  <li>
+    <a href="#verbatim">The "verbatim" license</a>
+    (personal preference of the current maintainer, and seems also to have
+    been the preference of the previous maintainer as well)
+    <br>
+    <br>
+  </li>
+
+  <li>
+    <a href="#gpl">The GNU General Public License (GPL)</a>
+    <br>
+    <br>
+  </li>
+
+  <li>
+    <a href="#gpl">The BSD License</a>
+  </li>
+</ul>
+
+<p>
+  <em>man-pages</em> does not include pages under the
+  <a href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License (GFDL)</a>.
+  This is a purely pragmatic decision, made because the
+  <a href="http://www.debian.org/vote/2006/vote_001">GFDL is problematic for Debian</a>,
+  one of the largest distributions.
+</p>
+
+<hr>
+<a name="verbatim"></a>
+<H2>The "Verbatim" License</H2>
+
+<p>
+  To use this license, just include the following at the top
+  of the page source, and substitute the appropriate pieces:
+</p>
+
+<pre class="shell">
+<strong>
+.\" Copyright (c) <em>&lt;year&gt;</em>, <em>&lt;copyright holder&gt;</em>
+.\" 
+.\" %%%LICENSE_START(VERBATIM)
+.\" Permission is granted to make and distribute verbatim copies of this
+.\" manual provided the copyright notice and this permission notice are
+.\" preserved on all copies.
+.\"
+.\" Permission is granted to copy and distribute modified versions of
+.\" this manual under the conditions for verbatim copying, provided that
+.\" the entire resulting derived work is distributed under the terms of
+.\" a permission notice identical to this one.
+.\"
+.\" Since the Linux kernel and libraries are constantly changing, this
+.\" manual page may be incorrect or out-of-date.  The author(s) assume.
+.\" no responsibility for errors or omissions, or for damages resulting.
+.\" from the use of the information contained herein.  The author(s) may.
+.\" not have taken the same level of care in the production of this.
+.\" manual, which is licensed free of charge, as they might when working.
+.\" professionally.
+.\"
+.\" Formatted or processed versions of this manual, if unaccompanied by
+.\" the source, must acknowledge the copyright and authors of this work.
+.\" %%%LICENSE_END
+</strong>
+</pre>
+
+<hr>
+
+<a name="gpl"></a>
+<h2>The GNU General Public License (GPL)</h2>
+
+<p>
+  You can license under the GPL
+  by including the following text at the top
+  of the page source, and substituting the appropriate pieces.
+  Licensing under GPLv2 is preferred, because so far only v2 of
+  the GPL is used in any man pages, and I'd prefer to avoid
+  further license proliferation.
+</p>
+
+<pre class="shell">
+<strong>
+.\" Copyright (c) <em>&lt;year&gt;</em>, <em>&lt;copyright holder&gt;</em>
+.\"
+.\" %%%LICENSE_START(GPLv2+_DOC_FULL)
+.\" This is free documentation; you can redistribute it and/or
+.\" modify it under the terms of the GNU General Public License as
+.\" published by the Free Software Foundation; either version <em>2</em> of
+.\" the License, or (at your option) any later version.
+.\"
+.\" The GNU General Public License's references to "object code"
+.\" and "executables" are to be interpreted as the output of any
+.\" document formatting or typesetting system, including
+.\" intermediate and printed output.
+.\"
+.\" This manual is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public
+.\" License along with this manual; if not, see
+.\" &lt;http://www.gnu.org/licenses/&gt;.
+.\" %%%LICENSE_END
+</strong>
+</pre>
+
+<hr>
+<a name="bsd"></a>
+<H2>BSD</H2>
+
+<p>
+  To use this license, just include the following at the top
+  of the page source, and substitute the appropriate pieces:
+</p>
+
+<pre class="shell">
+<strong>
+.\" Copyright (c) <em>&lt;year&gt;</em>, <em>&lt;copyright holder&gt;</em>
+.\" All rights reserved.
+.\"
+.\" %%%LICENSE_START(BSD_3_CLAUSE)
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\" * Redistributions of source code must retain the above copyright
+.\"   notice, this list of conditions and the following disclaimer.
+.\" * Redistributions in binary form must reproduce the above copyright
+.\"   notice, this list of conditions and the following disclaimer in
+.\"   the documentation and/or other materials provided with the
+.\"   distribution.
+.\" * Neither the name of the <em>&lt;organization&gt;</em>
+.\"   nor the names of its contributors may be used to endorse or
+.\"   promote products derived from this software without specific prior
+.\"   written permission.
+.\"
+.\" THIS SOFTWARE IS PROVIDED BY <em>&lt;copyright-holder&gt;</em>
+.\" ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+.\" LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+.\" FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+.\" IN NO EVENT SHALL THE <em>&lt;copyright-holder&gt;</em>
+.\" BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+.\" OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+.\" OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+.\" OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+.\" LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+.\" NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+.\" SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+.\" %%%LICENSE_END
+</strong>
+</pre>
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>

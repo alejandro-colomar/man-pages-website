@@ -1,0 +1,171 @@
+<html>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+<head>
+<title>
+Manual pages from other packages
+</title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+<a href="./contributing.html">contributing</a> | 
+<a href="./reporting_bugs.html">bugs</a> | 
+<a href="./patches.html">patches</a> | 
+<a href="./download.html">download</a> &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+
+
+<h1>Manual pages from other packages</h1>
+
+    <p>
+        Not all Linux man pages are part of the <em>man-pages</em> set.
+        In particular,
+        most Section 1, 6, and 8 pages come as part of some other package,
+        and many pages in Sections 3, 4, and 5 also come from other packages.
+        The easiest way to determine which pages are part of the
+        <em>man-pages</em> package is to
+        <a href="download.html">download the latest version</a>,
+        and see if the page is present,
+        or look in the
+        <a href="http://man7.org/linux/man-pages/index.html">online pages</a>.
+    </p>
+    <blockquote>
+        Alternatively, since release 2.69, all pages that are part of
+        the <em>man-pages</em> package contain a COLOPHON section at the end
+        of the page which explicitly notes that the page is part of
+        <em>man-pages</em> and notes the version of
+        <em>man-pages</em> in which the page occurs.
+    </blockquote>
+
+    <p>
+        If you want to submit a patch for a man page that comes from another
+        source, then you need to work out where the page comes from
+        (i.e., which package) and who the maintainer of that page is.
+        The way to do this depends on your distribution.
+    </p>
+
+
+
+<h3>RPM-based distributions</h3>
+
+    <p>
+        On an RPM-based distribution (e.g., SUSE, Red Hat, Mandriva), you
+        can do the following to find out which package owns a particular file.
+        For example, suppose we want to find out who maintains the
+        <span class="man-page">md(4)</span>
+        man page:
+    </p>
+    <pre class="shell">
+        $ <strong>man -w md</strong>
+        /usr/share/man/man4/md.4.gz
+        $ <strong>rpm -qf /usr/share/man/man4/md.4.gz</strong>
+        mdadm-2.5.3-17 </pre>
+
+    <p>
+        We then have to find who maintains the
+        <span class="pathname">mdadm</span>
+        package.
+        A web search might help answer the question,
+        or if you install the
+        <span class="pathname">mdadm</span>
+        source package, there will probably be a file
+        (typically named "README", "MAINTAINERS", ANNOUNCE", etc.)
+        that will identify the maintainer.
+    </p>
+
+
+
+<h3>Debian-based distributions</h3>
+
+    <p>
+        On a Debian-based distribution (e.g., Debian, Knoppix, Ubuntu) you can
+        do the following:
+    </p>
+    <pre class="shell">
+        $ <strong>man -w fstab</strong>
+        /usr/share/man/man5/fstab.5.gz
+        $ <strong>dpkg -S /usr/share/man/man5/fstab.5.gz</strong>
+        mount: /usr/share/man/man5/fstab.5.gz
+        $ <strong>dpkg -p mount | grep Maintainer</strong>
+        Maintainer: LaMont Jones <email@removed> </pre>
+
+    <p>
+        Note: this gives you the Debian maintainer of the package in question,
+        which is a good address to report to,
+        since many packages and man pages are modified by Debian.
+        The maintainer of the original package
+        can usually be found in a README in
+        <span class="pathname">/usr/share/doc/<package-name></span>.
+        (Use
+        <span class="cmd">dpkg -L mount</span>
+        to find all files from the
+        <span class="pathname">mount</span> package.)
+    </p>
+
+
+
+<h3>Gentoo</h3>
+
+    <p>
+        On Gentoo, we can use the
+        <span class="cmd">equery belongs</span>
+        command to do similar:
+    </p>
+    <pre class="shell">
+        $ <strong>equery belongs $(man -w md)</strong> </pre>
+
+    <p>
+        FIXME: fill in the details for Gentoo here.
+    </p>
+
+
+
+<h3>Other distributions</h3>
+
+    <p>
+        (FIXME: add instructions for doing the equivalent of the above on
+        distributions that use other schemes.)
+    </p>
+
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>

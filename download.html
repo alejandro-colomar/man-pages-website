@@ -1,0 +1,99 @@
+<html>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+<head>
+<title>
+Downloading man-pages
+</title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+<a href="./contributing.html">contributing</a> | 
+<a href="./reporting_bugs.html">bugs</a> | 
+<a href="./patches.html">patches</a> | 
+download &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+
+<h1>Downloading <em>man-pages</em></h1>
+
+<h2>Tarballs</h2>
+<p>
+  You can download the latest <em>man-pages</em> tarball
+  <a href="http://www.kernel.org/pub/linux/docs/man-pages/">here</a>;
+  older tarballs can be found
+  <a href="http://www.kernel.org/pub/linux/docs/man-pages/Archive/">here</a>.
+  The tarballs for the <em>man-pages-1.*</em> releases can be found 
+  <a href="http://www.win.tue.nl/~aeb/ftpdocs/linux-local/manpages.archive/">here</a>.
+</p>
+
+<h2>Git</h2>
+<p>
+  Using
+  <a href="http://git-scm.com/">Git</a>,
+  you can obtain the very latest version of <em>man-pages</em>
+  using the following command:
+</p>
+<!--
+$ <strong>git clone git://git.kernel.org/pub/scm/docs/man-pages/man-pages</strong>
+-->
+<pre class="shell">$ <strong>git clone http://git.kernel.org/pub/scm/docs/man-pages/man-pages</strong>
+</pre>
+
+<p>
+You can see what's recently been pushed to kernel.org via cgit:
+<a href="http://git.kernel.org/?p=docs/man-pages/man-pages.git">http://git.kernel.org/?p=docs/man-pages/man-pages.git</a>.
+</p>
+
+<!--
+$ <strong>git clone https://github.com/mkerrisk/man-pages</strong>
+-->
+<p>
+    Since the 2011 kernel outage, there is also a secondary Git repository at
+    <a href="https://github.com/mkerrisk/man-pages">https://github.com/mkerrisk/man-pages</a>.
+    However, that repo is updated less frequently;
+    the kernel.org repository should be considered the canonical Git repository.
+
+    </p>
+</p>
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>

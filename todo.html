@@ -1,0 +1,432 @@
+<html>
+<head>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+<title>
+TODO list for the Linux man-pages project
+</title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+<a href="./contributing.html">contributing</a> | 
+<a href="./reporting_bugs.html">bugs</a> | 
+<a href="./patches.html">patches</a> | 
+<a href="./download.html">download</a> &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+
+<h1>TODO list for the Linux <em>man-pages</em> project</h1>
+
+    <p>
+        There are many things that might or should be done in the future
+        for <em>man-pages</em>.
+        This page describes a few of them.
+        Help with, or opinions about, these ideas is welcome.
+    </p>
+
+    <ul>
+        <li>
+            <a href="#POSIX.1_2008_pages">Publish the next
+            revision of the POSIX.1 pages</a>
+        </li>
+        <li>
+            <a href="#migrate_to_kernel_source">Migrate <em>man-pages</em>
+            into the kernel source tree (?)</a>
+        </li>
+        <li>
+            <a href="#new_markup">Design and adopt a new mark-up language (?)</a>
+        </li>
+        <li>
+            <a href="#style_guide">Devise or adopt a style guide</a>
+        </li>
+    </ul>
+<hr>
+
+
+
+<a name="POSIX.1_2008_pages"></a>
+<h2>Publish the next revision of the POSIX.1 pages</h2>
+
+    <p>
+        <em>man-pages</em> currently provides (as a separate package) pages from the 
+        POSIX.1 standard, in Sections
+        0p (<em>Header Files</em>),
+        1p (<em>Commands</em>), and
+        3p (<em>Functions</em>).
+        These pages are derived from the 2001 version of POSIX.1.
+    </p>
+
+    <p>
+        A revision of POSIX.1 appeared in 2008.
+        We should ask once more for permission to
+        redistribute the new version of the pages.
+    </p>
+
+    <p>
+        A few formatting fixes will need to repeated for the new version of the pages,
+        including at least the following:
+    </p>
+
+    <ul>
+        <li>
+            Convert the POSIX.1 text to man-pages mark-up.
+        </li>
+        <li>
+            Add 0p/1p/3p to the TH line.
+        </li>
+        <li>
+            Add the PROLOG to the pages.
+        </li>
+        <li>
+            Clean up any white space issues that may be present.
+        </li>
+    </ul>
+
+<hr>
+
+<a name="migrate_to_kernel_source"></a>
+<h2>Migrate <em>man-pages</em> into the kernel source tree (?)</h2>
+
+    <p>
+        This idea has been floated by a few people.
+        There are some advantages:
+    </p>
+    <ul>
+        <li>
+            It might encourage kernel developers to work on 
+            man pages by placing them in the same location as the kernel source code.
+            <br>
+            <br>
+        </li>
+        <li>
+            Kernel source code patches changing the behavior of kernel-userland 
+            interfaces could include patches to the corresponding
+            man page text, and thus documentation patches could flow up the
+            maintainer chain in the usual fashion.
+        </li>
+    </ul>
+
+    <p>
+        There are also some disadvantages:
+    </p>
+    <ul>
+        <li>
+            The split between system calls and library functions is not 
+            clear cut from the point of view of the userland programmer.
+            Sometimes, glibc wrappers do some extra work before invoking
+            the underlying system call.
+            Currently, the section 2 pages document the behavior of the 
+            glibc wrapper, which may be different from the underlying system call,
+            and attempt (i.e., it's the goal, but not all pages do this well)
+            to include NOTES that describe differences in the
+            underlying system call.
+            (For example, see the "Linux Notes" in the
+            <a href="http://man7.org/linux/man-pages//man2/select.2.html#NOTES">NOTES
+            section of <em>select(2)</em></a>.)
+            <br>
+            <br>
+        </li>
+            One way to address this would be to truly separate the system call and
+            glibc wrapper information into two separate pages, one in Section 2,
+            the other in Section 3.
+            But this would require one of the following approaches,
+            each of which has its problems:
+            <br>
+            <br>
+        </li>
+        <ul>
+            <li>
+                Document the pure system call in a Section 2 page, and then document
+                the differences provided by the glibc wrapper in a corresponding 
+                Section 3 page.
+                The problem is that this would require userland programmers
+                (the main audience of the pages)
+                to look at two separate pages to get the information they require.
+                <br>
+                <br>
+            </li>
+            <li>
+                Document the pure system call in a Section 2 page, and
+                then document the complete behavior of the glibc wrapper
+                in Section 3, repeating material from the
+                Section 2 page as appropriate.
+                The problem here is redundancy: any changes in the Section
+                2 page would need to be carried through to the Section 3 page;
+                inevitably, inconsistencies will arise.
+                <blockquote>
+                <em>Note:</em> I am doubtful that the problem noted in
+                the above point could be resolved
+                via some "include" mechanism that includes relevant
+                pieces from the Section 2 page into the Section 3 page.
+                I think that would make the man page source files more difficult
+                to work with, and would likely be error-prone in practice
+                (because the producers of the "include" mark-up (man2) would
+                be separate from the consumers of that mark-up (man3)).
+                </blockquote>
+            </li>
+        </ul>
+        And of course it's worth noting that implementing either of
+        the above approaches would be a significant piece of work.
+        <br>
+        <br>
+        <li>
+            Many pages in Section 3 and in Sections 5 and 7 relate
+            purely to glibc.
+            If those pages are not to be migrated into the kernel source tree
+            (it makes little sense to do that), then
+            they should be split out into a separate package.
+            This raises several issues:
+            <br>
+            <br>
+            <ul>
+                <li>
+                    Where should the "glibc" pages be hosted?
+                    Apparently not with glibc, which favors <em>info</em>
+                    pages (and it's worth noting that the <em>man-pages</em>
+		    project often does a better job of documenting
+		    the glibc interfaces).
+                    <br>
+                    <br>
+                </li>
+                <li>
+                    Splitting the manual pages into two separate packages is
+                    a significant piece of work. It's not always obvious which
+                    package a particular page would belong to. Many pages
+                    contain content that would relate to both packages.
+                    (Do we split those pages into separate pages in the
+		    two packages?
+                    That's a big task.)
+                    <br>
+                    <br>
+                </li>
+                <li>
+                    From a maintenance point of view,
+                    maintaining two separate (but at times quite closely related)
+                    man page packages would be a little less comfortable
+                    than a single unified package.
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+
+    <p>
+        And there are some other points, which, while not exactly disadvantages,
+        should be kept in mind when considering any change away from
+        the approach currently employed in <em>man-pages</em>: 
+    </p>
+    <ul>
+        <li>
+            <em>man-pages</em> maintains historical information on interfaces.
+            That is, each man page documents not just the the latest kernel
+            (or glibc) implementation, but also changes in the interface over time.
+            Such information is of course important for userland programmers.
+            <br>
+            <br>
+        </li>
+        <li>
+            Sometimes, a man page relates to multiple underlying system calls.
+            For example, there have over time been many system calls that
+            correspond to the
+            <a href="http://man7.org/linux/man-pages/man2/stat.2.html">stat(2)</a>
+            manual page.
+            Other examples are the Section 2 pages for the sockets API and
+            the System V IPC APIs;
+            for both of those APIs, there are several Section 2 pages,
+            but (on most architectures), only one multiplexed system call
+            (respectively
+            <a href="http://man7.org/linux/man-pages/man2/ipc.2.html">ipc(2)</a>
+            and
+            <a href="http://man7.org/linux/man-pages/man2/socketcall.2.html">socketcall(2)</a>).
+        </li>
+    </ul>
+    <p>
+        Status:
+    </p>
+    <ul>
+        <li>
+            In my opinion, the disadvantages outweigh the advantages.
+            Furthermore, making the necessary changes would entail significant
+            time (which I don't have), and it's unproven whether the claimed
+            benefits would be borne out in practice (the state of
+            much of the material in the kernel
+            <span class="pathname">Documentation</span> directory
+            does not give grounds for optimism).
+            But I'm open to hearing further ideas.
+            <br>
+            <br>
+        </li>
+        <li>
+            Here's an alternative idea.
+            Employ a couple of patch tags in the style of
+            "<span class="const">Signed-off-by:</span>".
+            One of these could be (say)
+            "<span class="const">ABI-changes-noted-by:</span>", indicating
+            that someone has noted that this patch changes the API/ABI.
+            The other would be (say)
+            "<span class="const">ABI-changes-doc-acked-by:</span>",
+            an indication from the appropriate documentation maintainer
+            that the ABI changes have been documented in
+            <em>man-pages</em> (or elsewhere if appropriate);
+            details of the actual documentation could be included elsewhere
+            in the patch's log message.
+        </li>
+    </ul>
+
+<hr>
+
+<a name="new_markup"></a>
+<h2>Design and adopt a new mark-up language (?)</h2>
+
+    <p>
+        Currently, the pages in <em>man-pages</em> are written for <em>nroff</em>,
+        using one of two macro packages:
+        <em>man</em>, or the BSD derived <em>mdoc</em>.
+        (The vast majority of pages in
+        <em>man-pages</em>
+        employ the <em>man</em> macro package.)
+        Neither macro package is optimal, since they
+        don't encode sufficient semantic detail about the elements of a page.
+        (This is especially true of the <em>man</em> macro package.)
+    </p>
+
+    <p>
+        What is perhaps required is a new mark-up language (probably some form
+        of docbook) that:
+    </p>
+
+    <ul>
+        <li>
+            is unintrusive: the raw page source should remain very readable
+        </li>
+        <li>
+            applies mark-up by function, not by effect
+        </li>
+        <li>
+            can be easily processed to generate the present <em>nroff</em> from it
+        </li>
+        <li>
+            can be easily processed to generate HTML from it
+        </li>
+        <li>
+            is simple to learn and use
+        </li>
+    </ul>
+
+    <p>
+        And of course, the existing pages would need to be converted to
+        the new format.
+    </p>
+
+    <p>
+        Status: too big a job to seriously entertain at the moment.
+    </p>
+
+<hr>
+
+<a name="style_guide"></a>
+<h2>Devise or adopt a style guide</h2>
+
+    <p>
+        Because the pages in
+        <em>man-pages</em>
+        have been produced by many authors, there was much inconsistency
+        in spelling, layout, terminology, and so on.
+        During the course of the 2.xx and 3.xx releases there has been quite a lot
+        of work done to achieve greater consistency
+        (see for example the "Global changes" in releases
+        <a href="changelog.html#release_2.07">2.07</a>, 
+        <a href="changelog.html#release_2.10">2.10</a>, 
+        <a href="changelog.html#release_2.13">2.13</a>, 
+        <a href="changelog.html#release_2.21">2.21</a>, 
+        <a href="changelog.html#release_2.38">2.38</a>, 
+        <a href="changelog.html#release_2.44">2.44</a>, 
+        <a href="changelog.html#release_2.46">2.46</a>, 
+        <a href="changelog.html#release_2.47">2.47</a>, 
+        <a href="changelog.html#release_2.48">2.48</a>, 
+        <a href="changelog.html#release_2.51">2.51</a>, 
+        <a href="changelog.html#release_2.52">2.52</a>, 
+        <a href="changelog.html#release_2.53">2.53</a>, 
+        <a href="changelog.html#release_2.54">2.54</a>, 
+        <a href="changelog.html#release_2.56">2.56</a>, 
+        <a href="changelog.html#release_2.59">2.59</a>, 
+        <a href="changelog.html#release_2.60">2.60</a>, 
+        <a href="changelog.html#release_2.61">2.61</a>, 
+        <a href="changelog.html#release_2.62">2.62</a>, 
+        <a href="changelog.html#release_2.64">2.64</a>, 
+        <a href="changelog.html#release_2.65">2.65</a>, 
+        <a href="changelog.html#release_2.67">2.67</a>, 
+        <a href="changelog.html#release_2.69">2.69</a>,
+        <a href="changelog.html#release_2.70">2.70</a>,
+        <a href="changelog.html#release_2.71">2.71</a>,
+        <a href="changelog.html#release_2.72">2.72</a>,
+        <a href="changelog.html#release_2.74">2.74</a>,
+        <a href="changelog.html#release_2.75">2.75</a>,
+        <a href="changelog.html#release_2.80">2.80</a>,
+        <a href="changelog.html#release_3.00">3.00</a>,
+        <a href="changelog.html#release_3.01">3.01</a>,
+        <a href="changelog.html#release_3.04">3.04</a>,
+        <a href="changelog.html#release_3.12">3.12</a>,
+        <a href="changelog.html#release_3.19">3.19</a>,
+        <a href="changelog.html#release_3.20">3.20</a>,
+        <a href="changelog.html#release_3.24">3.24</a>,
+        <a href="changelog.html#release_3.27">3.27</a>,
+        <a href="changelog.html#release_3.29">3.29</a>,
+        <a href="changelog.html#release_3.30">3.30</a>,
+        and
+        <a href="changelog.html#release_3.35">3.35</a>),
+        but there is still more work to be done.
+        To guide that work, as well as authors of future pages, 
+        <em>man-pages</em> should have (i.e., probably adopt)
+        a style guide.
+    </p>
+
+    <p>
+        Status:
+        The open question is: what existing style guide is suitable?
+        (In the meantime,
+        <span class=manpage><a href="http://man7.org/linux/man-pages/man7/man-pages.7.html">man-pages(7)</a></span>
+        provides guidance on some points.)
+    </p>
+
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>

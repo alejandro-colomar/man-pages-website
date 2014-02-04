@@ -1,0 +1,286 @@
+<html>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+<head>
+<title>
+Patches for man-pages
+</title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+<a href="./contributing.html">contributing</a> | 
+<a href="./reporting_bugs.html">bugs</a> | 
+patches | 
+<a href="./download.html">download</a> &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+
+<h1>Patches for <em>man-pages</em></h1>
+
+<p>
+  If you know how to fix a problem in a man page, then send a patch to
+  <blockquote>
+      <span class="email">mtk.manpages@gmail.com</span>
+  </blockquote>
+  and CC
+  <blockquote>
+      <span class="email">linux-man@vger.kernel.org</span>
+  </blockquote>
+  (If you see a problem, but don't know how to fix it, look
+  <a href="reporting_bugs.html">here</a>.)
+</p>
+
+
+<p>
+  Please note the following points:
+</p>
+
+<ul>
+  <li>
+    <strong>Make sure that the mail has a suitable <em>Subject</em>
+    line</strong>
+    (i.e., one that mentions the name(s) of the page(s) being patched).
+    <!--
+    Don't put the
+    <em>man-pages</em>
+    version in the subject line (it should
+    already be in the body, and cluttering the subject line with a version
+    number does not help me when filing messages...).
+    -->
+    A suitable subject line might be something like:
+<pre>
+    [patch] shmop.2: Add "(void *)" cast to RETURN VALUE </pre>
+  </li>
+  <li>
+    For <strong>trivial patches</strong>,
+    I use a number keywords that are processed by
+    scripts that automatically build the release changelogs.
+    Please employ the following in the patch subject line,
+    where appropriate:
+    <br />
+    <br />
+    <ul>
+      <li>
+        <strong>ffix</strong>: Formatting fix
+      </li>
+      <li>
+        <strong>wfix</strong>: Minor wording fix
+      </li>
+      <li>
+        <strong>tfix</strong>: Typo fix
+      </li>
+      <li>
+        <strong>srcfix</strong>: Change to man page source that
+	doesn't affect formatted output.
+      </li>
+      <li>
+        <strong>spfix</strong>: Spelling fix
+      </li>
+    </ul>
+    <br />
+    Obviously, there's some ambiguity in the above; just choose the one that you think fits best.
+    Using this scheme, a patch's subject line might look like:
+<pre>
+    [patch] tcp.7: tfix</pre>
+  </li>
+
+  <li>
+    <strong>Describe how you obtained the information in your patch</strong>:
+    was it by reading (or
+    writing) the relevant kernel or (g)libc source code; by writing a
+    test program (send it with the patch, if you want, and if it is clear and
+    simple to use); from a standards document;
+    from other documentation; from a mailing list or
+    Usenet thread (please provide a URL if possible)?
+    <br>
+    <br>
+  </li>
+  
+  <li>
+    <strong>Please attempt to find and CC relevant developers.</strong>
+    If your patch documents a substantial feature or change, and you
+    know which developers added the feature or made the change
+    that your patch documents, please CC them on the patch;
+    with luck they may review and fix your patch.
+    If you don't know who the developers are, you may be
+    able to discover that information from mailing list archives
+    (<a hrf="http://gmane.org/">gmane.org</a> is especially helpful)
+    or from Git logs or logs in other version control systems.
+    Obviously, if you are the developer of the feature being documented
+    in a <em>man-pages</em> patch, please identify yourself as such.
+    <br>
+    <br>
+  </li>
+
+  <li>
+    <strong>Please consider CCing relevant mailing lists</strong>.
+    If your patch documents a substantial feature or change, please
+    consider CCing relevant mailing lists on your patch.
+    With luck, subscribers on the mailing list might review your patch.
+    Relevant mailing lists may include:
+    <br>
+    <br>
+    <ul>
+    <li>
+      <span class="email">linux-kernel@vger.kernel.org</span> for patches to system call pages 
+    </li>
+    <li>
+      <span class="email">netdev@vger.kernel.org</span> for patches to pages relating to networking and sockets
+    </li>
+    </ul>
+    <br>
+    The GNU C library developers
+    <a href="http://thread.gmane.org/gmane.comp.lib.glibc.alpha/19564/focus=20294">don't consider</a>
+    <em>man-pages</em> to
+    be any sort of official documentation for the library.
+    However, if you have a new page for Section 3 or a substantial addition
+    to one of those pages, you might consider CCing
+    <span class="email">libc-alpha@sourceware.org</span>;
+    there are some friendly folk there who may review or comment.
+    <br>
+    <br>
+  </li>
+
+  <li>
+    <strong>Patches that contain correctly formatted
+    <em>groff</em> are preferred</strong>.
+    The basics of
+    <em>groff</em>
+    are pretty simple, and you can probably learn as much as you need
+    by just looking at the source of the page to be patched;
+    see also the
+    <span class="man-page">groff_man(7)</span>
+    and
+    <span class="man-page">
+    <a href="http://man7.org/linux/man-pages/man7/man-pages.7.html">man-pages(7)</a>
+    </span>
+    man pages.
+    If you are uncertain of
+    <em>groff</em>
+    then send a patch that uses some plain text.
+    <br>
+    <br>
+  </li>
+
+  <li>
+    <strong>Make patches against the latest version of the man page</strong>.
+    For information on downloading the latest tarball, or pulling from the 
+    <em>man-pages</em>
+    <a href="http://git-scm.com/">Git</a> repository, see the
+    <a href="download.html">download</a> page.
+  
+    <blockquote>
+      If the man page that you want to patch is not in the tarball or
+      Git repository,
+      that's because it comes from a package other than <em>man-pages</em>;
+      in that case, you should look
+      <a href="man_pages_other.html">here</a>.
+    </blockquote>
+  </li>
+  
+  <li>
+    In the body of the mail message,
+    <strong>identify the
+    <em>man-pages</em>
+    version</strong> against which the patch applies.
+    <br>
+    <br>
+  </li>
+  
+  <li>
+    Where relevant, include source code comments that
+    <strong>cite commit hashes</strong> for relevant kernel or glibc changes:
+<pre>
+    .\" commit <40-character-git-hash></pre>
+    Doing so can be useful to help verify details of the patch,
+    or for later historical reference.
+    <br>
+    <br>
+  </li>
+  
+  <li>
+    <strong>Send patches in
+    <span class="cmd">diff -u</span>
+    format</strong>, inline inside the mail message
+    is usually best; if it is a very long patch then send it both inline
+    and as an attachment.
+    Since the
+    <em>man-pages</em>
+    project
+    uses Git, you may find it useful to employ
+    <span class="cmd">git-send-email</span>
+    or
+    <span class="cmd">git-format-patch</span>.
+    <br>
+    <br>
+  </li>
+  
+  <li>
+    <strong>Send logically separate patches</strong> (e.g., for unrelated pages,
+    or for logically separate issues in the same page)
+    as separate mails.
+    <br>
+    <br>
+  </li>
+  
+<!--
+  <li>
+    If editing a page, and you find one or two white spaces at the end
+    of an existing line, <strong>don't</strong> bother removing them.
+    The reason is that in a
+    <span class="cmd">diff -u</span>
+    patch this will make it look like there is a
+    change when in fact nothing has changed.
+    In most cases, these extra white spaces do no harm,
+    so just leave them be.
+  </li>
+-->
+  <li>
+    Don't try to patch the COLOPHON section of a page in
+    one of the release tarballs. That text is autogenerated
+    as part of the release process.
+  </li>
+
+</ul>
+
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>

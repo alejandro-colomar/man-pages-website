@@ -1,0 +1,147 @@
+<html>
+<head>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+<title>
+The linux-api mailing list
+</title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+<a href="./contributing.html">contributing</a> | 
+<a href="./reporting_bugs.html">bugs</a> | 
+<a href="./patches.html">patches</a> | 
+<a href="./download.html">download</a> &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+
+<h1>The linux-api mailing list</h1>
+
+    <p>
+        Following a session
+	(<a href="http://man7.org/conf/lpc2008/who_owns_the_interface.pdf">Who own's the interface</a>)
+	that I lead at the 2008 Linux Plumbers Conference,
+	the <em>linux-api</em> mailing list
+        (<span class="email">linux-api@vger.kernel.org</span>)
+	was
+        <a href="http://thread.gmane.org/gmane.linux.ltp/5658">created at my request</a>
+	as a forum to discuss
+        changes that affect the Linux programming interface</a>
+        (API or ABI).
+    </p>
+
+    <p>
+        Among other things, a primary goal of the list is to help 
+	answer the question: <em>How do we even know when an interface has been
+	added or changed?</em>
+	Many people have an interest in the answer to that question,
+	including:
+	<ul>
+	    <li>
+	        maintainers of C libraries, 
+	    </li>
+	    <li>
+	        the <em>man-pages</em> project,
+	    </li>
+	    <li>
+		testing projects such as
+		<a href="http://ltp.sourceforge.net/">LTP</a>
+		and
+		<a href="http://codemonkey.org.uk/projects/trinity/">trinity</a>,
+	    </li>
+	    <li>
+		maintainers of tracing tools such as 
+		<span class="func">strace(1)</span>,
+	    </li>
+	    <li>
+	        the <a href="http://www.linuxfoundation.org/collaborate/workgroups/lsb">Linux Standard Base (LSB)</a>,
+	    </li>
+	    <li>
+	        (possibly) other groups, such as the maintainers for the
+		<a href="http://kernelnewbies.org/LinuxChanges">LinuxChanges</a>
+		page at kernelnewbies.org,
+	    </li>
+	    <li>
+		and, of course, user-space programmers.
+	    </li>
+	</ul>
+
+    <p>
+	The difficulty of answering that question is a contributing factor
+	to many problems in the Linux API&mdash;for example,
+	insufficient design review before release
+	(with the consequence that mistakes in API designs
+	are recognized too late),
+	insufficient prerelease testing,
+	poor or late documentation,
+	and delays before kernel APIs are made
+	available via C libraries.
+    </p>
+
+    <p>
+        The kernel source file
+	<span class="pathname">Documentation/SubmitChecklis</span>
+	notes that all Linux kernel 
+	<strong>patches that change userspace interfaces should be CCed to
+	linux-api@vger.kernel.org</strong>.
+	You would help many people by heeding that advice,
+	and in return your kernel patches might even see a bit more view
+	and get better documentation, faster.
+    </p>
+    
+<h2>Subscription and archive</h2>
+
+    <p>
+        To subscribe to the list, send a message containing the
+        following <em>body</em> to
+        <span class="email">majordomo@vger.kernel.org</span>:
+    </p>
+
+    <pre>    subscribe linux-api </pre>
+
+    <p>
+        An archive of this list can be found on
+        <a href="http://dir.gmane.org/gmane.linux.kernel.api">gmane</a>.
+    </p>
+
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>

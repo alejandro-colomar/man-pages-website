@@ -1,0 +1,2565 @@
+<html>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+<head>
+<title>
+Manual pages that are missing from Linux man-pages
+</title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+<a href="./contributing.html">contributing</a> | 
+<a href="./reporting_bugs.html">bugs</a> | 
+<a href="./patches.html">patches</a> | 
+<a href="./download.html">download</a> &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+
+<h1>Manual pages that are missing from Linux <em>man-pages</em></h1>
+
+<p>
+    Below is a list of pages that I would like
+    to see in the <em>man-pages</em> set.
+    If you are thinking of writing one or more of these pages, then:
+</p>
+
+<ul>
+<li>
+    It might be wise to let me know in advance, just in case someone
+    else has started working on the page, or a related page.
+    I may also be able point you at useful sources of information for
+    the man page.
+    <br>
+    <br>
+</li>
+
+<li>
+    You need to have a reasonably high degree of understanding of the
+    topic, or be prepared to invest the time (e.g., reading source code,
+    writing test programs) to gain that understanding.
+    Writing test programs is important:
+    quite a few kernel and glibc bugs have been uncovered while writing
+    test programs during the preparation of man pages.
+    <br>
+    <br>
+</li>
+
+<li>
+    Follow the existing formatting conventions for man pages.
+    Some information about formatting is provided in the
+    <span class="man-page"><a href="http://man7.org/linux/man-pages/man7/man-pages.7.html">man(7)</a></span>
+    and
+    <span class="man-page"><a href="http://man7.org/linux/man-pages/man7/man-pages.7.html">man-pages(7)</a></span>
+    man pages.
+    As an example of how these conventions are employed, have a look at the
+    <span class="man-page"><a href="http://man7.org/linux/man-pages/man2/fcntl.2.html">fcntl(2)</a></span>
+    man page and read its source file
+    (<span class="pathname">man2/fcntl.2</span>).
+    <br>
+    <br>
+</li>
+
+<li>
+    The page must be submitted under some sort of
+    license that permits
+    the page to be freely redistributed and modified.
+    Include that
+    license or a reference to it, in the source code of the man page.
+    For a list of preferred free licenses, look
+    <a href="licenses.html">here</a>.
+    <br>
+    <br>
+</li>
+  
+<li>
+    Say how you obtained the information in the page: was it by reading (or
+    writing) the relevant kernel or (g)libc source code; by writing a
+    test program (send it with the patch, if you want, and if it is clear and
+    simple to use); from a standards document;
+    from other documentation; from a mailing list or
+    Usenet thread (please provide a URL if possible)?
+    <br>
+    <br>
+</li>
+  
+<li>
+    Send the page (inline, not as an attachment) to
+    <blockquote>
+      <span class="email">mtk.manpages@gmail.com</span>
+    </blockquote>
+    CC
+    <blockquote>
+      <span class="email">linux-man@vger.kernel.org</span>
+    </blockquote>
+    and CC any other interested parties,
+    including any people that you know of who might
+    be suitable reviewers for the page.
+    <br>
+    <br>
+</li>
+
+<li>
+    The GNU C library documents many of the functions that it provides using
+    <span class="man-page">info(1)</span>.</span>
+    Since many programmers prefer documentation in <em>man</em> format,
+    this does not preclude writing a manual page for functions that
+    are already documented using <span class="man-page">info(1)</span>.</span>
+    Ideally, the manual page would include at least as much information
+    as is included in the <span class="man-page">info(1)</span> page,</span>
+    and also include details that are typically not covered in
+    <span class="man-page">info(1)</span> pages,</span>
+    for example, historical
+    information about how the function has changed across various glibc
+    versions, or variations in operation across C libraries; such
+    information is often not present in <span class="man-page">info(1)</span>
+    pages).
+    (An alternative to
+    consider is submitting a patch to the maintainers of the glibc
+    documentation, if that is more appropriate.)
+</li>
+  
+</ul>
+
+
+
+<h3>System Calls</h3>
+
+
+<table border=1 cellspacing=0 cellpadding=5>
+  <tr>
+    <td align="center">
+      <strong>System call</strong>
+    </td>
+    <td align="center">
+      <strong>Since<br>kernel</strong>
+    </td>
+    <td align="center">
+      <strong>Notes</strong>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">endian_switch(2)</span>
+    </td>
+    <td>
+      2.6.26
+    </td>
+    <td>
+      POWER 6 specific; see http://thread.gmane.org/gmane.linux.ltp/5233/
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">fanotify_init(2)</span>,
+      <span class="man-page">fanotify_mark(2)</span>
+    </td>
+    <td>
+      2.6.37
+    </td>
+    <td>
+      These system calls were added in 2.6.36,
+      but disabled while the API was finalized.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">add_key(2)</span>
+      <br>
+      <span class="man-page">keyctl(2)</span>
+      <br>
+      <span class="man-page">request_key(2)</span>
+    </td>
+    <td>
+      2.6.10
+    </td>
+    <td>
+        See: 
+	    <span class="pathname">Documentation/keys.txt</span>
+	    and
+            <span class="pathname">Documentation/keys-request-key.txt</span>.
+            Requires CONFIG_KEYS (and optionally CONFIG_KEYS_DEBUG_PROC_KEYS)
+            under "Security options"
+	<br>
+	<em>Versions of these pages exist, but more work needs to be done.</em>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">sys_debug_setcontext(2)</span>
+    </td>
+    <td>
+      2.6.11
+    </td>
+    <td>
+      PowerPC if CONFIG_POWERPC kernel config option is enabled
+    </td>
+  </tr>
+<!--
+  <tr>
+    <td>
+      <span class="man-page">syslets</span>
+    </td>
+    <td>
+      ????
+    </td>
+    <td>
+      http://lwn.net/Articles/261473
+      http://lwn.net/Articles/261092/
+    </td>
+  </tr>
+-->
+<!--
+  <tr>
+    <td>
+      <span class="man-page">sys_indirect</span>
+    </td>
+    <td>
+      ????
+    </td>
+    <td>
+      http://lwn.net/Articles/259068/
+      http://lwn.net/Articles/260172/
+    </td>
+  </tr>
+-->
+<!--
+  <tr>
+    <td>
+      <span class="man-page">hijack(2)</span>
+    </td>
+    <td>
+      ????
+    </td>
+    <td>
+      http://lwn.net/Articles/260172/
+    </td>
+  </tr>
+-->
+
+</table>
+
+
+
+
+<h3><span class="pathname">/sys</span> file system</h3>
+
+<p>
+    There is no man page for the
+    <span class="pathname">/sys</span>
+    file system: there probably should
+    be a
+    <span class="man-page">sys(5)</span>
+    page similar to
+    <span class="man-page">proc(5)</span>.</span>
+    The kernel source file
+    <span class="pathname">Documentation/filesystems/sysfs.txt</span>
+    provides a starting point for this page.
+</p>
+
+
+
+
+<h3>Library Functions</h3>
+<p>
+    A list of undocumented (GNU) C library functions is given below.
+    Searches like the following are likely to suggest other functions
+    that need to be documented:
+</p>
+<pre class="shell">
+<strong>
+
+MPDIR=~/man-pages       # Directory containing uncompressed man-pages
+GLIBCDIR=/SOME_DIR      # Directory containing glibc tree
+
+for f in  $(cat $(find $GLIBCDIR -name Versions |
+                egrep -v '/(hurd|mach)/') |
+        egrep -v '({|}|^%)' |
+        sed -e 's/#.*//' |
+        tr ';' '\012' |
+        sed 's/^  *//' |
+        grep -v '^[_.]' |
+        sort -u); do
+    if ! test -f "$MPDIR/man3/$f.3" &gt; /dev/null 2&gt;&amp;1 &amp;&amp;
+                ! test -f "$MPDIR/man2/$f.2" &gt; /dev/null 2&gt;&amp;1 ; then
+        echo $f;
+    fi
+done
+</strong>
+</pre>
+
+<p>
+    Alternatively, one can look at the text symbols exported
+    by a particular library (unless the library symbols have been stripped),
+    to see if there is a corresponding man page.
+    Here, an example using
+    <span class="pathname">libm</span>:
+</p>
+<pre class="shell">
+<strong>
+nm -D /lib/libm.so.6 | sed -re '/^[0-9a-f]* T /!d; s///; /^_/d' | 
+	xargs whatis | sed -ne 's/: nothing appropriate\.$//p' | sort -u
+</strong>
+</pre>
+
+<p>
+    In many cases, the interfaces listed below were found using such scripts,
+    and it hasn't been checked whether these are obsolete interfaces that may
+    better be not documented.
+</p>
+
+<!--
+Probably should not be documented:
+
+	fcrypt()
+	mcount()
+
+-->
+
+<table border=1 cellspacing=0 cellpadding=5>
+  <tr>
+    <td align="center">
+      <strong>Function</strong>
+    </td>
+    <td align="center">
+      <strong>Since glibc<br>version</strong>
+    </td>
+    <td align="center">
+      <strong>Notes</strong>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">dlinfo(3)</span>
+    </td>
+    <td>
+      2.3.3
+    </td>
+    <td>
+      Solaris and FreeBSD have a similar function.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">dladdr1(3)</span>
+    </td>
+    <td>
+      2.3.3
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">dlmopen(3)</span>
+    </td>
+    <td>
+      2.3.4
+    </td>
+    <td>
+      Probably to be documented in
+      <span class="man-page">dlopen(3)</span>;</span>
+      Solaris has a similar function.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">mallwatch(3)</span>
+      <br>
+      <span class="man-page">tr_break(3)</span> (?)
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      The idea is that in a debugger, we set 'mallwatch' to an address
+      returned by the malloc functions, set a breakpoint on tr_break()
+      (defined inside glibc), and then continue execution. When a malloc
+      operation touches the address referred to by 'mallwatch', the 
+      breakpoint is actioned. mtrace() must be used to install the
+      necessary malloc hooks.
+    </td>
+  </tr>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">posix_madvise(3)</span>
+    </td>
+    <td>
+      2.2
+    </td>
+    <td>
+      POSIX_MADV_DONTNEED became a no-op in glibc 2.7,
+      reflecting the fact that the underlying madvise(MADV_DONTNEED)
+      is not consistent with POSIX semantics.
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">quick_exit(3)</span>,</span>
+      <span class="man-page">at_quick_exit(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      New in glibc 2.10.
+      See http://udrepper.livejournal.com/20948.html
+      and
+      http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2440.htm.
+      Standardized in C11.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">res_ninit(3)</span>,</span>
+      <br>
+      <span class="man-page">res_nmkquery(3)</span>,</span>
+      <br>
+      <span class="man-page">res_nquery(3)</span>,</span>
+      <br>
+      <span class="man-page">res_nquerydomain(3)</span>,</span>
+      <br>
+      <span class="man-page">res_nsearch(3)</span>,</span>
+      <br>
+      <span class="man-page">res_nsend(3)</span>,</span>
+      <br>
+      <span class="man-page">res_nclose(3)</span>
+
+      <span class="man-page">res_gethostbyaddr(3)</span>
+      <br>
+      <span class="man-page">res_gethostbyname(3)</span>
+      <br>
+      <span class="man-page">res_gethostbyname2(3)</span>
+      <br>
+      <span class="man-page">res_send_setqhook(3)</span>
+      <br>
+      <span class="man-page">res_send_setrhook(3)</span>
+      <br>
+    </td>
+    <td>
+      2.8
+    </td>
+    <td>
+      Perhaps to be documented on resolver(3) page.
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">isalnum_l(3)</span>
+      <br>
+      <span class="man-page">isalpha_l(3)</span>
+      <br>
+      <span class="man-page">isascii_l(3)</span>
+      <br>
+      <span class="man-page">isblank_l(3)</span>
+      <br>
+      <span class="man-page">iscntrl_l(3)</span>
+      <br>
+      <span class="man-page">isdigit_l(3)</span>
+      <br>
+      <span class="man-page">isgraph_l(3)</span>
+      <br>
+      <span class="man-page">islower_l(3)</span>
+      <br>
+      <span class="man-page">isprint_l(3)</span>
+      <br>
+      <span class="man-page">ispunct_l(3)</span>
+      <br>
+      <span class="man-page">isspace_l(3)</span>
+      <br>
+      <span class="man-page">isupper_l(3)</span>
+      <br>
+      <span class="man-page">iswalnum_l(3)</span>
+      <br>
+      <span class="man-page">iswalpha_l(3)</span>
+      <br>
+      <span class="man-page">iswblank_l(3)</span>
+      <br>
+      <span class="man-page">iswcntrl_l(3)</span>
+      <br>
+      <span class="man-page">iswctype_l(3)</span>
+      <br>
+      <span class="man-page">iswdigit_l(3)</span>
+      <br>
+      <span class="man-page">iswgraph_l(3)</span>
+      <br>
+      <span class="man-page">iswlower_l(3)</span>
+      <br>
+      <span class="man-page">iswprint_l(3)</span>
+      <br>
+      <span class="man-page">iswpunct_l(3)</span>
+      <br>
+      <span class="man-page">iswspace_l(3)</span>
+      <br>
+      <span class="man-page">iswupper_l(3)</span>
+      <br>
+      <span class="man-page">iswxdigit_l(3)</span>
+      <br>
+      <span class="man-page">isxdigit_l(3)</span>
+      <br>
+      <span class="man-page">nl_langinfo_l(3)</span>
+      <br>
+      <span class="man-page">strcasecmp_l(3)</span>
+      <br>
+      <span class="man-page">strcoll_l(3)</span>
+      <br>
+      <span class="man-page">strerror_l(3)</span>
+      <br>
+      <span class="man-page">strfmon_l(3)</span>
+      <br>
+      <span class="man-page">strftime_l(3)</span>
+      <br>
+      <span class="man-page">strncasecmp_l(3)</span>
+      <br>
+      <span class="man-page">strptime_l(3)</span>
+      <br>
+      <span class="man-page">strtod_l(3)</span>
+      <br>
+      <span class="man-page">strtof_l(3)</span>
+      <br>
+      <span class="man-page">strtol_l(3)</span>
+      <br>
+      <span class="man-page">strtold_l(3)</span>
+      <br>
+      <span class="man-page">strtoll_l(3)</span>
+      <br>
+      <span class="man-page">strtoul_l(3)</span>
+      <br>
+      <span class="man-page">strtoull_l(3)</span>
+      <br>
+      <span class="man-page">strxfrm_l(3)</span>
+      <br>
+      <span class="man-page">toascii_l(3)</span>
+      <br>
+      <span class="man-page">tolower_l(3)</span>
+      <br>
+      <span class="man-page">toupper_l(3)</span>
+      <br>
+      <span class="man-page">towctrans_l(3)</span>
+      <br>
+      <span class="man-page">towlower_l(3)</span>
+      <br>
+      <span class="man-page">towupper_l(3)</span>
+      <br>
+      <span class="man-page">wcscasecmp_l(3)</span>
+      <br>
+      <span class="man-page">wcscoll_l(3)</span>
+      <br>
+      <span class="man-page">wcsftime_l(3)</span>
+      <br>
+      <span class="man-page">wcsncasecmp_l(3)</span>
+      <br>
+      <span class="man-page">wcstod_l(3)</span>
+      <br>
+      <span class="man-page">wcstof_l(3)</span>
+      <br>
+      <span class="man-page">wcstol_l(3)</span>
+      <br>
+      <span class="man-page">wcstold_l(3)</span>
+      <br>
+      <span class="man-page">wcstoll_l(3)</span>
+      <br>
+      <span class="man-page">wcstoul_l(3)</span>
+      <br>
+      <span class="man-page">wcstoull_l(3)</span>
+      <br>
+      <span class="man-page">wcsxfrm_l(3)</span>
+      <br>
+      <span class="man-page">wctrans_l(3)</span>
+      <br>
+      <span class="man-page">wctype_l(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      Locale functions -- See POSIX.1-2008 specification
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">uselocale(3)</span>,</span>
+      <span class="man-page">newlocale(3)</span>,</span>
+      <span class="man-page">duplocale(3)</span>,</span>
+      <span class="man-page">freelocale(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      These functions are in POSIX.1-2008;
+      made public in glibc 2.3
+      (there was an earlier "unstable" implementation in glibc,
+      with function names prefixed with "__").
+      The feature test macro requirements changed in glibc 2.10.
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">register_printf_function()</span>,</span>
+      <span class="man-page">parse_printf_format()</span>,</span>
+    </td>
+    <td>
+      2.0
+    </td>
+    <td>
+      There are info pages, and &lt;printf.h&gt; contains useful information.
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">endsgent(3)</span>
+      <br>
+      <span class="man-page">fgetsgent(3)</span>
+      <br>
+      <span class="man-page">fgetsgent_r(3)</span>
+      <br>
+      <span class="man-page">getsgent(3)</span>
+      <br>
+      <span class="man-page">getsgent_r(3)</span>
+      <br>
+      <span class="man-page">getsgnam(3)</span>
+      <br>
+      <span class="man-page">getsgnam_r(3)</span>
+      <br>
+      <span class="man-page">putsgent(3)</span>
+      <br>
+      <span class="man-page">setsgent(3)</span>
+      <br>
+      <span class="man-page">sgetsgent(3)</span>
+      <br>
+      <span class="man-page">sgetsgent_r(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      Shadow group file functions,
+      analogous to shadow password file functions
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">advance(3)</span>
+      <br>
+      <span class="man-page">step(3)</span>
+      <br>
+      <span class="man-page">loc1(3)</span>,
+      <span class="man-page">loc2(3)</span>,
+      <span class="man-page">locs(3)</span>
+      <br>
+      <span class="man-page">re_compile_fastmap(3)</span>
+      <br>
+      <span class="man-page">re_compile_pattern(3)</span>
+      <br>
+      <span class="man-page">re_match(3)</span>
+      <br>
+      <span class="man-page">re_match_2(3)</span>
+      <br>
+      <span class="man-page">re_max_failures(3)</span>
+      <br>
+      <span class="man-page">re_search(3)</span>
+      <br>
+      <span class="man-page">re_search_2(3)</span>
+      <br>
+      <span class="man-page">re_set_registers(3)</span>
+      <br>
+      <span class="man-page">re_set_syntax(3)</span>
+      <br>
+      <span class="man-page">re_syntax_options(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">gamma_r(3)</span>
+      <br>
+      <span class="man-page">gammaf_r(3)</span>
+      <br>
+      <span class="man-page">gammal_r(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">inet_net_ntop(3)</span>
+      <br>
+      <span class="man-page">inet_net_pton(3)</span>
+      <br>
+      <span class="man-page">inet_neta(3)</span>
+      <br>
+      <span class="man-page">inet_nsap_addr(3)</span>
+      <br>
+      <span class="man-page">inet_nsap_ntoa(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">parse_printf_format(3)</span>
+      <br>
+      <span class="man-page">printf_size(3)</span>
+      <br>
+      <span class="man-page">printf_size_info(3)</span>
+      <br>
+      <span class="man-page">register_printf_function(3)</span>
+      <br>
+      <span class="man-page">register_printf_modifier(3)</span>
+      <br>
+      <span class="man-page">register_printf_specifier(3)</span>
+      <br>
+      <span class="man-page">register_printf_type(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">clntunix_create(3)</span>
+      <br>
+      <span class="man-page">getnetname(3)</span>
+      <br>
+      <span class="man-page">netname(3)</span>
+      <br>
+      <span class="man-page">getpublickey(3)</span>
+      <br>
+      <span class="man-page">getsecretkey(3)</span>
+      <br>
+      <span class="man-page">key_decryptsession_pk(3)</span>
+      <br>
+      <span class="man-page">key_encryptsession_pk(3)</span>
+      <br>
+      <span class="man-page">key_get_conv(3)</span>
+      <br>
+      <span class="man-page">key_setnet(3)</span>
+      <br>
+      <span class="man-page">rpc_createerr(3)</span>
+      <br>
+      <span class="man-page">rpc_createerr(3)</span>
+      <br>
+      <span class="man-page">svc_exit(3)</span>
+      <br>
+      <span class="man-page">svc_fdset(3)</span>
+      <br>
+      <span class="man-page">svc_getreq_common(3)</span>
+      <br>
+      <span class="man-page">svc_getreq_poll(3)</span>
+      <br>
+      <span class="man-page">svc_max_pollfd(3)</span>
+      <br>
+      <span class="man-page">svc_pollfd(3)</span>
+      <br>
+      <span class="man-page">svcauthdes_stats(3)</span>
+      <br>
+      <span class="man-page">svcudp_enablecache(3)</span>
+      <br>
+      <span class="man-page">svcunix_create(3)</span>
+      <br>
+      <span class="man-page">svcunixfd_create(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">authdes_create(3)</span>
+      <br>
+      <span class="man-page">authdes_getucred(3)</span>
+      <br>
+      <span class="man-page">authdes_pk_create(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">getipv4sourcefilter(3)</span>
+      <br>
+      <span class="man-page">getsourcefilter(3)</span>
+      <br>
+      <span class="man-page">setipv4sourcefilter(3)</span>
+      <br>
+      <span class="man-page">setsourcefilter(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">ntp_adjtime(3)</span>
+      <br>
+      <span class="man-page">ntp_gettime(3)</span>
+      <br>
+      <span class="man-page">ntp_gettimex(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">idna_to_ascii_lz(3)</span>
+      <br>
+      <span class="man-page">idna_to_unicode_lzlz(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      There are various other "idna" functions not listed in a Versions file?
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">get_avphys_pages(3)</span>
+      <br>
+      <span class="man-page">get_phys_pages(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      There are also: sysconf(_SC_AVPHYS_PAGES)  and sysconf(_SC_PHYS_PAGES)
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">moncontrol(3)</span>
+      <br>
+      <span class="man-page">monstartup(3)</span>
+      <br>
+      <span class="man-page">profil_counter(3)</span>
+      <br>
+      <span class="man-page">sprofil(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">glob_pattern_p(3)</span>
+
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      Needs _GNU_SOURCE
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">group_member(3)</span>
+
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      Needs _GNU_SOURCE
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">rexecoptions(3)</span>
+      <br>
+      <span class="man-page">ruserpass(3)</span>
+
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      Not in glibc 2.12 headers?
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">h_errlist(3)</span>
+      <br>
+      <span class="man-page">h_nerr(3)</span>
+
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      Not in glibc 2.12 headers? Probably deprecated.
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">host2netname(3)</span>
+      <br>
+      <span class="man-page">netname2host(3)</span>
+      <br>
+      <span class="man-page">netname2user(3)</span>
+      <br>
+      <span class="man-page">user2netname(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">isfdtype(3)</span>
+
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      Needs _BSD_SOURCE or _SVID_SOURCE
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">isctype(3)</span>
+
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      Needs _GNU_SOURCE
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">ns_datetosecs(3)</span>
+      <br>
+      <span class="man-page">ns_format_ttl(3)</span>
+      <br>
+      <span class="man-page">ns_get16(3)</span>
+      <br>
+      <span class="man-page">ns_get32(3)</span>
+      <br>
+      <span class="man-page">ns_initparse(3)</span>
+      <br>
+      <span class="man-page">ns_makecanon(3)</span>
+      <br>
+      <span class="man-page">ns_msg_getflag(3)</span>
+      <br>
+      <span class="man-page">ns_name_compress(3)</span>
+      <br>
+      <span class="man-page">ns_name_ntol(3)</span>
+      <br>
+      <span class="man-page">ns_name_ntop(3)</span>
+      <br>
+      <span class="man-page">ns_name_pack(3)</span>
+      <br>
+      <span class="man-page">ns_name_pton(3)</span>
+      <br>
+      <span class="man-page">ns_name_rollback(3)</span>
+      <br>
+      <span class="man-page">ns_name_skip(3)</span>
+      <br>
+      <span class="man-page">ns_name_uncompress(3)</span>
+      <br>
+      <span class="man-page">ns_name_unpack(3)</span>
+      <br>
+      <span class="man-page">ns_parse_ttl(3)</span>
+      <br>
+      <span class="man-page">ns_parserr(3)</span>
+      <br>
+      <span class="man-page">ns_put16(3)</span>
+      <br>
+      <span class="man-page">ns_put32(3)</span>
+      <br>
+      <span class="man-page">ns_samedomain(3)</span>
+      <br>
+      <span class="man-page">ns_samename(3)</span>
+      <br>
+      <span class="man-page">ns_skiprr(3)</span>
+      <br>
+      <span class="man-page">ns_sprintrr(3)</span>
+      <br>
+      <span class="man-page">ns_sprintrrf(3)</span>
+      <br>
+      <span class="man-page">ns_subdomain(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">obstack_alloc_failed_handler(3)</span>
+      <br>
+      <span class="man-page">obstack_exit_failure(3)</span>
+      <br>
+      <span class="man-page">obstack_free(3)</span>
+      <br>
+      <span class="man-page">obstack_printf(3)</span>
+      <br>
+      <span class="man-page">obstack_vprintf(3)</span>
+      <br>
+      <span class="man-page">open_obstack_stream(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">inet6_opt_append(3)</span>
+      <br>
+      <span class="man-page">inet6_opt_find(3)</span>
+      <br>
+      <span class="man-page">inet6_opt_finish(3)</span>
+      <br>
+      <span class="man-page">inet6_opt_get_val(3)</span>
+      <br>
+      <span class="man-page">inet6_opt_init(3)</span>
+      <br>
+      <span class="man-page">inet6_opt_next(3)</span>
+      <br>
+      <span class="man-page">inet6_opt_set_val(3)</span>
+      <br>
+      <span class="man-page">inet6_option_alloc(3)</span>
+      <br>
+      <span class="man-page">inet6_option_append(3)</span>
+      <br>
+      <span class="man-page">inet6_option_find(3)</span>
+      <br>
+      <span class="man-page">inet6_option_init(3)</span>
+      <br>
+      <span class="man-page">inet6_option_next(3)</span>
+      <br>
+      <span class="man-page">inet6_option_space(3)</span>
+      <br>
+      <span class="man-page">inet6_rth_add(3)</span>
+      <br>
+      <span class="man-page">inet6_rth_getaddr(3)</span>
+      <br>
+      <span class="man-page">inet6_rth_init(3)</span>
+      <br>
+      <span class="man-page">inet6_rth_reverse(3)</span>
+      <br>
+      <span class="man-page">inet6_rth_segments(3)</span>
+      <br>
+      <span class="man-page">inet6_rth_space(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">nis_add(3)</span>
+      <br>
+      <span class="man-page">nis_add_entry(3)</span>
+      <br>
+      <span class="man-page">nis_addmember(3)</span>
+      <br>
+      <span class="man-page">nis_checkpoint(3)</span>
+      <br>
+      <span class="man-page">nis_clone_directory(3)</span>
+      <br>
+      <span class="man-page">nis_clone_object(3)</span>
+      <br>
+      <span class="man-page">nis_clone_result(3)</span>
+      <br>
+      <span class="man-page">nis_creategroup(3)</span>
+      <br>
+      <span class="man-page">nis_destroy_object(3)</span>
+      <br>
+      <span class="man-page">nis_destroygroup(3)</span>
+      <br>
+      <span class="man-page">nis_dir_cmp(3)</span>
+      <br>
+      <span class="man-page">nis_domain_of(3)</span>
+      <br>
+      <span class="man-page">nis_domain_of_r(3)</span>
+      <br>
+      <span class="man-page">nis_first_entry(3)</span>
+      <br>
+      <span class="man-page">nis_free_directory(3)</span>
+      <br>
+      <span class="man-page">nis_free_object(3)</span>
+      <br>
+      <span class="man-page">nis_free_request(3)</span>
+      <br>
+      <span class="man-page">nis_freenames(3)</span>
+      <br>
+      <span class="man-page">nis_freeresult(3)</span>
+      <br>
+      <span class="man-page">nis_freeservlist(3)</span>
+      <br>
+      <span class="man-page">nis_freetags(3)</span>
+      <br>
+      <span class="man-page">nis_getnames(3)</span>
+      <br>
+      <span class="man-page">nis_getservlist(3)</span>
+      <br>
+      <span class="man-page">nis_ismember(3)</span>
+      <br>
+      <span class="man-page">nis_leaf_of(3)</span>
+      <br>
+      <span class="man-page">nis_leaf_of_r(3)</span>
+      <br>
+      <span class="man-page">nis_lerror(3)</span>
+      <br>
+      <span class="man-page">nis_list(3)</span>
+      <br>
+      <span class="man-page">nis_local_directory(3)</span>
+      <br>
+      <span class="man-page">nis_local_group(3)</span>
+      <br>
+      <span class="man-page">nis_local_host(3)</span>
+      <br>
+      <span class="man-page">nis_local_principal(3)</span>
+      <br>
+      <span class="man-page">nis_lookup(3)</span>
+      <br>
+      <span class="man-page">nis_mkdir(3)</span>
+      <br>
+      <span class="man-page">nis_modify(3)</span>
+      <br>
+      <span class="man-page">nis_modify_entry(3)</span>
+      <br>
+      <span class="man-page">nis_name_of(3)</span>
+      <br>
+      <span class="man-page">nis_name_of_r(3)</span>
+      <br>
+      <span class="man-page">nis_next_entry(3)</span>
+      <br>
+      <span class="man-page">nis_perror(3)</span>
+      <br>
+      <span class="man-page">nis_ping(3)</span>
+      <br>
+      <span class="man-page">nis_print_directory(3)</span>
+      <br>
+      <span class="man-page">nis_print_entry(3)</span>
+      <br>
+      <span class="man-page">nis_print_group(3)</span>
+      <br>
+      <span class="man-page">nis_print_group_entry(3)</span>
+      <br>
+      <span class="man-page">nis_print_link(3)</span>
+      <br>
+      <span class="man-page">nis_print_object(3)</span>
+      <br>
+      <span class="man-page">nis_print_result(3)</span>
+      <br>
+      <span class="man-page">nis_print_rights(3)</span>
+      <br>
+      <span class="man-page">nis_print_table(3)</span>
+      <br>
+      <span class="man-page">nis_read_obj(3)</span>
+      <br>
+      <span class="man-page">nis_remove(3)</span>
+      <br>
+      <span class="man-page">nis_remove_entry(3)</span>
+      <br>
+      <span class="man-page">nis_removemember(3)</span>
+      <br>
+      <span class="man-page">nis_rmdir(3)</span>
+      <br>
+      <span class="man-page">nis_servstate(3)</span>
+      <br>
+      <span class="man-page">nis_sperrno(3)</span>
+      <br>
+      <span class="man-page">nis_sperror(3)</span>
+      <br>
+      <span class="man-page">nis_sperror_r(3)</span>
+      <br>
+      <span class="man-page">nis_stats(3)</span>
+      <br>
+      <span class="man-page">nis_verifygroup(3)</span>
+      <br>
+      <span class="man-page">nis_write_obj(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">yp_all(3)</span>
+      <br>
+      <span class="man-page">yp_bind(3)</span>
+      <br>
+      <span class="man-page">yp_first(3)</span>
+      <br>
+      <span class="man-page">yp_get_default_domain(3)</span>
+      <br>
+      <span class="man-page">yp_maplist(3)</span>
+      <br>
+      <span class="man-page">yp_master(3)</span>
+      <br>
+      <span class="man-page">yp_match(3)</span>
+      <br>
+      <span class="man-page">yp_next(3)</span>
+      <br>
+      <span class="man-page">yp_order(3)</span>
+      <br>
+      <span class="man-page">yp_unbind(3)</span>
+      <br>
+      <span class="man-page">yp_update(3)</span>
+      <br>
+      <span class="man-page">ypbinderr_string(3)</span>
+      <br>
+      <span class="man-page">yperr_string(3)</span>
+      <br>
+      <span class="man-page">ypprot_err(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+
+      <span class="man-page">xdr_authdes_cred(3)</span>
+      <br>
+      <span class="man-page">xdr_authdes_verf(3)</span>
+      <br>
+      <span class="man-page">xdr_cback_data(3)</span>
+      <br>
+      <span class="man-page">xdr_cryptkeyarg(3)</span>
+      <br>
+      <span class="man-page">xdr_cryptkeyarg2(3)</span>
+      <br>
+      <span class="man-page">xdr_cryptkeyres(3)</span>
+      <br>
+      <span class="man-page">xdr_des_block(3)</span>
+      <br>
+      <span class="man-page">xdr_domainname(3)</span>
+      <br>
+      <span class="man-page">xdr_getcredres(3)</span>
+      <br>
+      <span class="man-page">xdr_hyper(3)</span>
+      <br>
+      <span class="man-page">xdr_int16_t(3)</span>
+      <br>
+      <span class="man-page">xdr_int32_t(3)</span>
+      <br>
+      <span class="man-page">xdr_int64_t(3)</span>
+      <br>
+      <span class="man-page">xdr_int8_t(3)</span>
+      <br>
+      <span class="man-page">xdr_key_netstarg(3)</span>
+      <br>
+      <span class="man-page">xdr_key_netstres(3)</span>
+      <br>
+      <span class="man-page">xdr_keybuf(3)</span>
+      <br>
+      <span class="man-page">xdr_keydat(3)</span>
+      <br>
+      <span class="man-page">xdr_keystatus(3)</span>
+      <br>
+      <span class="man-page">xdr_longlong_t(3)</span>
+      <br>
+      <span class="man-page">xdr_mapname(3)</span>
+      <br>
+      <span class="man-page">xdr_netnamestr(3)</span>
+      <br>
+      <span class="man-page">xdr_netobj(3)</span>
+      <br>
+      <span class="man-page">xdr_obj_p(3)</span>
+      <br>
+      <span class="man-page">xdr_peername(3)</span>
+      <br>
+      <span class="man-page">xdr_quad_t(3)</span>
+      <br>
+      <span class="man-page">xdr_rmtcall_args(3)</span>
+      <br>
+      <span class="man-page">xdr_rmtcallres(3)</span>
+      <br>
+      <span class="man-page">xdr_sizeof(3)</span>
+      <br>
+      <span class="man-page">xdr_u_hyper(3)</span>
+      <br>
+      <span class="man-page">xdr_u_longlong_t(3)</span>
+      <br>
+      <span class="man-page">xdr_u_quad_t(3)</span>
+      <br>
+      <span class="man-page">xdr_uint16_t(3)</span>
+      <br>
+      <span class="man-page">xdr_uint32_t(3)</span>
+      <br>
+      <span class="man-page">xdr_uint64_t(3)</span>
+      <br>
+      <span class="man-page">xdr_uint8_t(3)</span>
+      <br>
+      <span class="man-page">xdr_unixcred(3)</span>
+      <br>
+      <span class="man-page">xdr_valdat(3)</span>
+      <br>
+      <span class="man-page">xdr_yp_buf(3)</span>
+      <br>
+      <span class="man-page">xdr_ypall(3)</span>
+      <br>
+      <span class="man-page">xdr_ypbind_binding(3)</span>
+      <br>
+      <span class="man-page">xdr_ypbind_resp(3)</span>
+      <br>
+      <span class="man-page">xdr_ypbind_resptype(3)</span>
+      <br>
+      <span class="man-page">xdr_ypbind_setdom(3)</span>
+      <br>
+      <span class="man-page">xdr_ypdelete_args(3)</span>
+      <br>
+      <span class="man-page">xdr_ypmap_parms(3)</span>
+      <br>
+      <span class="man-page">xdr_ypmaplist(3)</span>
+      <br>
+      <span class="man-page">xdr_yppush_status(3)</span>
+      <br>
+      <span class="man-page">xdr_yppushresp_xfr(3)</span>
+      <br>
+      <span class="man-page">xdr_ypreq_key(3)</span>
+      <br>
+      <span class="man-page">xdr_ypreq_nokey(3)</span>
+      <br>
+      <span class="man-page">xdr_ypreq_xfr(3)</span>
+      <br>
+      <span class="man-page">xdr_ypresp_all(3)</span>
+      <br>
+      <span class="man-page">xdr_ypresp_key_val(3)</span>
+      <br>
+      <span class="man-page">xdr_ypresp_maplist(3)</span>
+      <br>
+      <span class="man-page">xdr_ypresp_master(3)</span>
+      <br>
+      <span class="man-page">xdr_ypresp_order(3)</span>
+      <br>
+      <span class="man-page">xdr_ypresp_val(3)</span>
+      <br>
+      <span class="man-page">xdr_ypresp_xfr(3)</span>
+      <br>
+      <span class="man-page">xdr_ypstat(3)</span>
+      <br>
+      <span class="man-page">xdr_ypupdate_args(3)</span>
+      <br>
+      <span class="man-page">xdr_ypxfrstat(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">td_init(3)</span>
+      <br>
+      <span class="man-page">td_log(3)</span>
+      <br>
+      <span class="man-page">td_symbol_list(3)</span>
+      <br>
+      <span class="man-page">td_ta_clear_event(3)</span>
+      <br>
+      <span class="man-page">td_ta_delete(3)</span>
+      <br>
+      <span class="man-page">td_ta_enable_stats(3)</span>
+      <br>
+      <span class="man-page">td_ta_event_addr(3)</span>
+      <br>
+      <span class="man-page">td_ta_event_getmsg(3)</span>
+      <br>
+      <span class="man-page">td_ta_get_nthreads(3)</span>
+      <br>
+      <span class="man-page">td_ta_get_ph(3)</span>
+      <br>
+      <span class="man-page">td_ta_get_stats(3)</span>
+      <br>
+      <span class="man-page">td_ta_map_id2thr(3)</span>
+      <br>
+      <span class="man-page">td_ta_map_lwp2thr(3)</span>
+      <br>
+      <span class="man-page">td_ta_new(3)</span>
+      <br>
+      <span class="man-page">td_ta_reset_stats(3)</span>
+      <br>
+      <span class="man-page">td_ta_set_event(3)</span>
+      <br>
+      <span class="man-page">td_ta_setconcurrency(3)</span>
+      <br>
+      <span class="man-page">td_ta_thr_iter(3)</span>
+      <br>
+      <span class="man-page">td_ta_tsd_iter(3)</span>
+      <br>
+      <span class="man-page">td_thr_clear_event(3)</span>
+      <br>
+      <span class="man-page">td_thr_dbresume(3)</span>
+      <br>
+      <span class="man-page">td_thr_dbsuspend(3)</span>
+      <br>
+      <span class="man-page">td_thr_event_enable(3)</span>
+      <br>
+      <span class="man-page">td_thr_event_getmsg(3)</span>
+      <br>
+      <span class="man-page">td_thr_get_info(3)</span>
+      <br>
+      <span class="man-page">td_thr_getfpregs(3)</span>
+      <br>
+      <span class="man-page">td_thr_getgregs(3)</span>
+      <br>
+      <span class="man-page">td_thr_getxregs(3)</span>
+      <br>
+      <span class="man-page">td_thr_getxregsize(3)</span>
+      <br>
+      <span class="man-page">td_thr_set_event(3)</span>
+      <br>
+      <span class="man-page">td_thr_setfpregs(3)</span>
+      <br>
+      <span class="man-page">td_thr_setgregs(3)</span>
+      <br>
+      <span class="man-page">td_thr_setprio(3)</span>
+      <br>
+      <span class="man-page">td_thr_setsigpending(3)</span>
+      <br>
+      <span class="man-page">td_thr_setxregs(3)</span>
+      <br>
+      <span class="man-page">td_thr_sigsetmask(3)</span>
+      <br>
+      <span class="man-page">td_thr_tls_get_addr(3)</span>
+      <br>
+      <span class="man-page">td_thr_tlsbase(3)</span>
+      <br>
+      <span class="man-page">td_thr_tsd(3)</span>
+      <br>
+      <span class="man-page">td_thr_validate(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      libthread
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">printf_size()</span>,</span>
+      <span class="man-page">printf_size_info()</span>
+    </td>
+    <td>
+      2.1
+    </td>
+    <td>
+      There are info pages, and &lt;printf.h&gt; contains useful information.
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">argp_error(3)</span>
+      <br>
+      <span class="man-page">argp_err_exit_status(3) (variable)</span>
+      <br>
+      <span class="man-page">argp_failure(3)</span>
+      <br>
+      <span class="man-page">argp_help(3)</span>
+      <br>
+      <span class="man-page">argp_parse(3)</span>
+      <br>
+      <span class="man-page">argp_program_bug_address(3)</span>
+      <br>
+      <span class="man-page">argp_program_version(3)</span>
+      <br>
+      <span class="man-page">argp_program_version_hook(3)</span>
+      <br>
+      <span class="man-page">argp_state_help(3)</span>
+      <br>
+      <span class="man-page">argp_usage(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      There are info pages.
+    </td>
+  </tr>
+
+
+  <tr>
+    <td>
+      <span class="man-page">posix_spawn(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_destroy(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_getflags(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_getpgroup(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_getschedparam(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_getschedpolicy(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_getsigdefault(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_getsigmask(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_init(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_setflags(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_setpgroup(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_setschedparam(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_setschedpolicy(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_setsigdefault(3)</span>
+      <br>
+      <span class="man-page">posix_spawnattr_setsigmask(3)</span>
+      <br>
+      <span class="man-page">posix_spawn_file_actions_addclose(3)</span>
+      <br>
+      <span class="man-page">posix_spawn_file_actions_adddup2(3)</span>
+      <br>
+      <span class="man-page">posix_spawn_file_actions_addopen(3)</span>
+      <br>
+      <span class="man-page">posix_spawn_file_actions_destroy(3)</span>
+      <br>
+      <span class="man-page">posix_spawn_file_actions_init(3)</span>
+      <br>
+      <span class="man-page">posix_spawnp(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      Work is in progress on these pages.
+    </td>
+  </tr>
+
+
+  <tr>
+    <td colspan=3 align="center">
+      Various wide-character functions
+      <br>
+      (with their traditional equivalents
+      mentioned in parentheses)
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">wscanf(3)</span>    (<span class="manpage">scanf(3)</span>)</span>
+      <br>
+      <span class="man-page">fwscanf(3)</span>   (<span class="manpage">fscanf(3)</span>)</span>
+      <br>
+      <span class="man-page">swscanf(3)</span>   (<span class="manpage">sscanf(3)</span>)</span>
+      <br>
+      <span class="man-page">vfwscanf(3)</span>  (<span class="manpage">vfscanf(3)</span>)</span>
+      <br>
+      <span class="man-page">vswscanf(3)</span>  (<span class="manpage">vsscanf(3)</span>)</span>
+      <br>
+      <span class="man-page">wcschrnul(3)</span> (<span class="manpage">strchrnul(3)</span>)</span>
+      <br>
+      <span class="man-page">wcscoll(3)</span>   (<span class="manpage">strcoll(3)</span>)</span>
+      <br>
+      <span class="man-page">wcsftime(3)</span>  (<span class="manpage">strftime(3)</span>)</span>
+      <br>
+      <span class="man-page">wcstod(3)</span>    (<span class="manpage">strtod(3)</span>)</span>
+      <br>
+      <span class="man-page">wcstof(3)</span>    (<span class="manpage">strtof(3)</span>)</span>
+      <br>
+      <span class="man-page">wcstold(3)</span>   (<span class="manpage">strtold(3)</span>)</span>
+      <br>
+      <span class="man-page">wcstol(3)</span>    (<span class="manpage">atol(3)</span>)</span>
+      <br>
+      <span class="man-page">wcstol(3)</span>    (<span class="manpage">strtol(3)</span>)</span>
+      <br>
+      <span class="man-page">wcstoul(3)</span>   (<span class="manpage">strtoul(3)</span>)</span>
+      <br>
+      <span class="man-page">wcstoll(3)</span>   (<span class="manpage">strtoll(3)</span>)</span>
+      <br>
+      <span class="man-page">wcstoull(3)</span>  (<span class="manpage">strtoull(3)</span>)</span>
+      <br>
+      <span class="man-page">wcstoq(3)</span>    (<span class="manpage">atoq(3)</span>)</span>
+      <br>
+      <span class="man-page">wcstoq(3)</span>    (<span class="manpage">strtoq(3)</span>)</span>
+      <br>
+      <span class="man-page">wcstouq(3)</span>   (<span class="manpage">strtouq(3)</span>)</span>
+      <br>
+      <span class="man-page">wcswcs(3)</span>    (<span class="manpage">strstr(3)</span>)</span>
+      <br>
+      <span class="man-page">wcsxfrm(3)</span>   (<span class="manpage">strxfrm(3)</span>)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+        After these man pages are written, add SEE ALSO entries
+        from the pages for the traditional functions to the pages
+        describing their wide-character equivalents.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">wmemrtombs(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">swscanf(3)</span>
+      <br>
+      <span class="man-page">vfwscanf(3)</span>
+      <br>
+      <span class="man-page">vswscanf(3)</span>
+      <br>
+      <span class="man-page">vwscanf(3)</span>
+      <br>
+      <span class="man-page">wscanf(3)</span>
+      <br>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+</table>
+
+
+
+<h3>The POSIX Threads API</h3>
+<p>
+    And last, but far from least, the POSIX threads API.
+    Note that there is an existing,
+    outdated set of pages supplied with glibc that document the
+    old LinuxThreads implementation.
+    (These pages are written under a license that allows re-use,
+    so some material that they contain could be used in new pages.)
+</p>
+<p>
+    What is required is a set of pages that document the complete API,
+    describing details where LinuxThreads and NPTL diverge
+    from the standard.
+    The existing
+    <span class="man-page">pthreads(7)</span>
+    man page, which gives an
+    overview of Pthreads implementations on Linux,
+    is designed as a background document for these man pages.
+</p>
+<p>
+    The list of required man pages is
+    long (related functions can be grouped on a single page); those marked
+    with more asterisks are probably the most desirable to get done first.
+</p>
+
+<table border=1 cellspacing=0 cellpadding=5>
+  <tr>
+    <td align="center">
+      <strong>Function</strong>
+    </td>
+    <td align="center">
+      <strong>Since glibc<br>version</strong>
+    </td>
+    <td align="center">
+      <strong>Notes</strong>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_atfork(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      *
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_barrierattr_destroy(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_barrierattr_getpshared(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_barrierattr_init(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_barrierattr_setpshared(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_barrier_destroy(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_barrier_init(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_barrier_wait(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_condattr_destroy(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_condattr_getclock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_condattr_getpshared(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_condattr_init(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_condattr_setclock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_condattr_setpshared(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_cond_broadcast(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_cond_destroy(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_cond_init(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_cond_signal(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_cond_timedwait(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_cond_wait(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_getconcurrency(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_getattr_default_np(3)</span>,
+      <span class="man-page">pthread_setattr_default_np(3)</span>
+    </td>
+    <td>
+      2.18
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_getspecific(3)</span>,
+      <span class="man-page">pthread_setspecific(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_key_create(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_key_delete(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutexattr_destroy(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutexattr_getpshared(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutexattr_gettype(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutexattr_init(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutexattr_setpshared(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutexattr_settype(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutex_consistent_np(3)</span>
+    </td>
+    <td>
+      2.4
+    </td>
+    <td>
+      POSIX.1-2008 has pthread_mutex_consistent()
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutexattr_getrobust_np(3)</span>
+    </td>
+    <td>
+      2.4
+    </td>
+    <td>
+      POSIX.1-2008 has pthread_mutexattr_getrobust()
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutexattr_setrobust_np(3)</span>
+    </td>
+    <td>
+      2.4
+    </td>
+    <td>
+      POSIX.1-2008 has pthread_mutexattr_setrobust()
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutexattr_getprotocol(3)</span>
+    </td>
+    <td>
+      2.4
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutexattr_setprotocol(3)</span>
+    </td>
+    <td>
+      2.4
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutexattr_getprioceiling(3)</span>
+    </td>
+    <td>
+      2.4
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutexattr_setprioceiling(3)</span>
+    </td>
+    <td>
+      2.4
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutex_getprioceiling(3)</span>
+    </td>
+    <td>
+      2.4
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutex_setprioceiling(3)</span>
+    </td>
+    <td>
+      2.4
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutex_destroy(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutex_init(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutex_lock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutex_timedlock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutex_trylock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_mutex_unlock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      **
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlockattr_destroy(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlockattr_getkind_np(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlockattr_getpshared(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlockattr_init(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlockattr_setkind_np(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlockattr_setpshared(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlock_destroy(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlock_init(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlock_rdlock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlock_timedrdlock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlock_timedwrlock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlock_tryrdlock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlock_trywrlock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlock_unlock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_rwlock_wrlock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_spin_destroy(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_spin_init(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_spin_lock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_spin_trylock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pthread_spin_unlock(3)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+
+</table>
+
+
+
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>

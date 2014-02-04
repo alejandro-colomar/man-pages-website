@@ -1,0 +1,210 @@
+<html>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+<head>
+<title>
+Reporting man-pages bugs
+</title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+<a href="./contributing.html">contributing</a> | 
+bugs | 
+<a href="./patches.html">patches</a> | 
+<a href="./download.html">download</a> &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+
+<h1>Reporting <em>man-pages</em> bugs</h1>
+
+<blockquote>
+    <blockquote>
+        <blockquote>
+            <p>
+                <strong>
+                <em>
+                <font size="+1" color="#800000">
+                If, rather than a documentation bug,
+                you think you've found a bug in a system call
+                (i.e., in the Linux kernel),
+                or in a library function (i.e., in glibc), look
+                <a href="reporting_code_bugs.html">here</a>.
+                </font>
+                </em>
+                </strong>
+            </p>
+            <p>
+                <strong>
+                <em>
+                <font size="+1" color="#800000">
+                If you want to report a bug for a man
+                page that belongs to a package
+                other than <em>man-pages</em>, look
+                <a href="man_pages_other.html">here</a>.
+                </font>
+                </em>
+                </strong>
+            </p>
+        </blockquote>
+    </blockquote>
+</blockquote>
+
+
+
+<p>
+<strong>When making a bug report please:
+</strong>
+</p>
+<ul>
+    <li>
+        Check that the bug is present in the latest version of the man pages.
+        To do this, you can either
+        <a href="http://www.kernel.org/pub/linux/docs/man-pages/">download</a>
+        the latest version of the <em>man-pages</em> tarball,
+        or look in the
+        <a href="http://man7.org/linux/man-pages/index.html">online manual 
+        pages</a>.
+        Alternatively, you can
+        <a href="download.html">clone</a>
+        the current version of the Git repository
+        and check if the bug is present.
+        (See also: <a href="what_version.html">How do I find what <em>man-pages</em> version I have?</a>)
+        <br>
+        <br>
+    </li>
+
+    <li>
+        Note the name and release of the distribution that you are using.
+        This information is useful because some distributions apply
+        patches to the <em>man-pages</em> package, and it may be
+        that your bug report relates to text that is part of
+        a downstream change.
+        <br>
+        <br>
+    </li>
+
+    <li>
+        Report <em>logically</em> separate bugs (even for the same page) as
+        separate reports.
+        This makes it possible to respond to the bugs in
+        separate pieces.
+    </li>
+</ul>
+
+</ul>
+
+
+<p>
+    <strong>The way to report a <em>man-pages</em> bug</strong>
+    depends on the type of bug:
+</p>
+
+<ul>
+    <li>
+        Simple one-line or two-line errors (typos, spelling, grammar, etc.),
+        or HTML rendering problems in the
+        <a href="http://man7.org/linux/man-pages/index.html">online pages</a>
+        can be reported by sending an email message to
+        <blockquote>
+            <span class="email">mtk.manpages@gmail.com</span>
+            and CC
+            <span class="email">linux-man@vger.kernel.org</span>.
+        </blockquote>
+
+        <strong>Please do not report such bugs
+        via the bugzilla.</strong>
+        Doing so creates unnecessary bugzilla administrative overhead.
+        <br>
+        <br>
+    </li>
+    <li>
+        For a more complex problem or error,
+        if you know how to fix it, then, ideally,
+        <a href="patches.html">send a patch</a>.
+        <br>
+        <br>
+    </li>
+    <li>
+        If you believe there is a problem with a page,
+        but don't know how to fix it,
+        then there are two ways to report the bug:
+        <br>
+        <br>
+        <ul>
+    </li>
+    <li>
+        Raise a bug report under the <em>man-pages</em> component of the
+        <span class="pathname">kernel.org</span>
+        <a href="http://bugzilla.kernel.org/enter_bug.cgi?product=Documentation">bugzilla</a>.
+        Doing <strong>this is the preferred mechanism</strong>,
+        especially for difficult problems.
+        <blockquote>
+        You will need to create an account on this bugzilla if you
+        don't already have one.
+        This bugzilla is oriented toward Linux kernel bugs,
+        so includes template text that is not relevant for most
+        <em>man-pages</em> bug reports.
+        Don't worry about reporting the
+        <em>Tree</em>,
+        <em>Alias</em>, or
+        <em>Kernel Version</em> (just specify "n/a"),
+        and you can ignore the template text under <em>Description</em>.
+        <br>
+        <br>
+        The list of unresolved bugs in in the bugzilla can be seen
+        <a href="https://bugzilla.kernel.org/buglist.cgi?query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&emailassigned_to1=1&emailtype1=substring&email1=documentation_man-pages@kernel-bugs.osdl.org">here</a>.
+        </blockquote>
+    </li>
+    <li>
+        Send a message to
+        <span class="email">mtk.manpages@gmail.com</span>
+        and CC
+        <span class="email">linux-man@vger.kernel.org</span>.
+        <br>
+        <br>
+    </li>
+</ul>
+<br>
+
+
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>

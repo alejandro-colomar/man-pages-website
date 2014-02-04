@@ -1,0 +1,925 @@
+<html>
+<head>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+    <title>
+        Maintaining Linux man-pages
+    </title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+<a href="./contributing.html">contributing</a> | 
+<a href="./reporting_bugs.html">bugs</a> | 
+<a href="./patches.html">patches</a> | 
+<a href="./download.html">download</a> &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+<h1>
+Maintaining Linux <em>man-pages</em>
+</h1>
+
+    <p>
+        One day, someone else will be the maintainer.
+        So, to make life easier for the next person:
+        some tips on how to maintain the Linux <em>man-pages</em> project
+        (also useful for anyone who wants to help with work
+        on <em>man-pages</em>).
+    </p>
+
+<h2>Read some man pages</h2>
+
+    <p>
+        Read at least the following:
+    </p>
+
+    <ul>
+        <li>
+            <span class="man-page">
+            <a href="http://man7.org/linux/man-pages/man7/man-pages.7.html">man-pages(7)</a>
+            </span>
+        </li>
+        <li>
+            <span class="man-page">
+            <a href="http://man7.org/linux/man-pages/man7/man.7.html">man(7)</a>
+            </span>
+        </li>
+        <li>
+            <span class="man-page">
+            <a href="http://man7.org/linux/man-pages/man7/standards.7.html">standards(7)</a>
+            </span>
+        </li>
+        <li>
+            <span class="man-page">
+            <a href="http://man7.org/linux/man-pages/man7/feature_test_macros.7.html">feature_test_macros(7)</a>
+            </span>
+        </li>
+        <li>
+            <span class="man-page">groff(7)</span>
+        </li>
+        <li>
+            <span class="man-page">groff_man(7)</span>
+        </li>
+        <li>
+            <span class="man-page">groff_char(7)</span>
+        </li>
+    </ul>
+
+    <p>
+        All of these pages are relevant for maintaining <em>man-pages</em>.
+        Some of them are part of packages other than <em>man-pages</em>.
+    </p>
+
+
+
+<h2>Get the source code</h2>
+    <p>
+        History matters.
+        The <em>man-pages</em> project documents not just the current
+        state of the Linux kernel and glibc APIs,
+        but also how they have changed over time.
+    </p>
+
+    <blockquote>
+        Once upon a time, <em>man-pages</em> also used to document
+        Linux libc details (libc4, libc5),
+        and there are still some vestiges of that intent in existing pages,
+        but Linux libc is pretty much dead nowadays (see
+        <a href="http://en.wikipedia.org/wiki/GNU_C_Library#A_temporary_fork">here</a>
+        and
+        <a href="http://web.archive.org/web/20040411191201/http://people.redhat.com/~sopwith/old/glibc-vs-libc5.html">here</a>
+        for some details),
+        and there is no longer much need to keep documenting its peculiarities.
+    </blockquote>
+
+    <p>
+        Your time is valuable, and disk space is cheap, so
+        set aside a few gigabytes of disk space...
+    </p>
+  
+
+  
+<h3>Kernel source code</h3>
+    <p>
+        You can find nearly every kernel release ever made at
+        <a href="http://www.kernel.org/">http://www.kernel.org/</a>.
+        At the very least, you will probably find it useful to:
+    </p>
+
+    <ul>
+        <li>
+            Keep up-to-date trees for the latest 2.2.x, 2.4.x, and 3.x kernels.
+            In fact, given the modern Linux development model,
+            it can save time to keep
+            unpacked trees for all of the 2.6.x/3.x releases.
+            These trees can be inspected to look at
+            differences across kernel versions.
+            <br>
+            <br>
+            You can get a copy of Linus' Git tree (i.e., the current development tree)
+            using this command:
+            <!-- https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/ -->
+            <pre class="shell">$ <strong>git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git linux</strong></pre>
+            Thereafter, just update the copy using <span class="func">git pull</span>.
+            <br>
+            <br>
+            To get a copy of the <span class="func">linux-next</span> tree:
+            <!-- https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/ -->
+            <pre class="shell">$ <strong>git clone git://git.kernel.org/pub/scm/linux/kernel/git/sfr/linux-next.git linux-next</strong></pre>
+        </li>
+        <li>
+            Keep a directory that contains every minor release patch ever made
+            (e.g., patch-2.6.15, patch-2.6.0, patch-2.5.38, patch-2.4.1,
+            patch-2.4.0-test7, patch-1.2.16, etc.).
+            Grepping these patches can help determine in which minor release a kernel
+            change occurred.
+            For example, you can use the following to see when
+            <span class="func">epoll_create()</span>
+            was added as a system call:
+            <pre class="shell">$ <strong>grep 'epoll_create' patch-*</strong></pre>
+        </li>
+        <li>
+            Keep all the kernel ChangeLogs too.
+            They can be inspected to look for explanations of patches found
+            via grepping as described in the previous point.
+        </li>
+
+    </ul>
+
+    <p>
+        For browsing the kernel source code,
+        <a href="http://lxr.linux.no/">lxr</a>
+        can be useful!
+        (Online browsable versions of various free kernels can be found at
+        <a href="http://fxr.watson.org/">http://fxr.watson.org/</a>.)
+    </p>
+
+
+<h3>Glibc source code</h3>
+
+    <p>
+        Same story as the kernel:
+    </p>
+
+    <ul>
+        <li>
+            Keep up-to-date trees for all 2.x, x &lt; 0, releases.
+        </li>
+    
+        <li>
+            Keep
+            <span class="cmd">diff</span>
+            files for all minor releases of the glibc tree.
+            As with the kernel, these can be grepped to help determine
+            when a particular change occurred in glibc.
+        </li>
+    </ul>
+  
+    <p>
+        A lot of glibc tarballs can be found at
+        <a href="http://ftp.gnu.org/gnu/glibc/">http://ftp.gnu.org/gnu/glibc/</a>.
+        Many older tarballs can be found at
+        <a href="ftp://ftp.win.tue.nl/pub/linux-local/libc.archive/">ftp://ftp.win.tue.nl/pub/linux-local/libc.archive/</a>.
+        Snapshots of the latest glibc development tree can be obtained via git:
+    </p>
+    <pre class="shell">git clone git://sourceware.org/git/glibc.git </pre>
+
+    <p>
+        To obtain the code of a particular glibc release,
+        use a command such as the following to check out that release from the
+        git repository cloned in the previous command
+        (here, getting the source of glibc 2.10):
+    </p>
+    <pre class="shell"> git checkout glibc-2.10 </pre>
+
+
+
+<h2>Keeping up</h2>
+    <p>
+        One of the biggest challenges is keeping up to date with changes in
+        the kernel and glibc. 
+        There are a few ways to do this.
+    </p>
+
+
+<h3>Git</h3>
+
+    <p>
+        If you are looking for a specific kernel commit,
+        or a commit log message containing a particular string, then searching
+        <a href="http://git.kernel.org/?p=linux/kernel/git/torvalds/linux.git"> Linus' Git tree</a>
+        can be useful.
+    </p>
+
+
+<h3>Mailing lists</h3>
+
+    <p>
+        <strong>Linux API</strong>
+    </p>
+
+    <p>
+        The <a href="linux-api-ml.html">linux-api mailing list</a>
+        (<span class="email">linux-api@vger.kernel.org</span>)
+        discusses
+        changes that affect the Linux programming interface</a>
+        (API or ABI).
+        In theory, all patches that change the interface should be CCed to this list.
+        To subscribe, send a message containing the
+        following <em>body</em> to
+        <span class="email">majordomo@vger.kernel.org</span>:
+    </p>
+
+    <pre>    subscribe linux-api </pre>
+
+    <p>
+        An archive of this list can be found on
+        <a href="http://dir.gmane.org/gmane.linux.kernel.api">gmane</a>.
+    </p>
+
+    <p>
+        <strong>Linux Kernel (LKML)</strong>
+    </p>
+
+    <p>
+        This list
+        (<span class="email">linux-kernel@vger.kernel.org</span>)
+        contains patches,
+        bug reports, and general discussions about the kernel.
+        To subscribe, send a message containing the
+        following <em>body</em> to
+        <span class="email">majordomo@vger.kernel.org</span>:
+    </p>
+
+    <pre>    subscribe linux-kernel </pre>
+
+    <p>
+        The problem with this list is that the volume is extremely high,
+        so keeping close track of it all would require a lot of time.
+    </p>
+
+    <p>
+        <a href="http://www.kernel.org/">http://www.kernel.org/</a>
+        provides the locations of a few searchable
+        archives of this mailing list.
+        I find
+        <a href="http://dir.gmane.org/gmane.linux.kernel">gmane</a>
+        nice to use.
+    </p>
+
+    <p>
+        <strong>Linux Kernel Announce</strong>
+    </p>
+    <p>
+        This low-volume list
+        (<span class="email">linux-kernel-announce@vger.kernel.org</span>)
+        announces releases of new versions of various kernel branches,
+        including release candidates for the mainline kernel and
+        new <em>-mm</em> kernels.
+        To subscribe, send a message containing the following <em>body</em> to
+        <span class="email">majordomo@vger.kernel.org</span>:
+    </p>
+
+    <pre>    subscribe linux-kernel-announce </pre>
+
+    <p>
+        <strong>netdev</strong>
+    </p>
+    <p>
+        The netdev list,
+        (<span class="email">netdev@vger.kernel.org</span>),
+        is the list used by the developers of the Linux networking subsystem.
+    </p>
+
+    <p>
+        To subscribe, send a message containing the following <em>body</em> to
+        <span class="email">majordomo@vger.kernel.org</span>:
+    </p>
+
+    <pre>    subscribe netdev </pre>
+
+    <p>
+        Archives of this list can be found on
+        <a href="http://dir.gmane.org/gmane.linux.network">gmane</a>
+        and
+        <a href="http://marc.info/?l=linux-netdev">marc</a>.
+    </p>
+
+<!--
+The linux-net@vger.kernel.org mailing list is for networking
+user questions. Subscribe by sending
+subscribe linux-net in the message body to majordomo@vger.kernel.org 
+http://dir.gmane.org/gmane.linux.network.general
+-->
+
+    <p>
+        <strong>Linux Test Project (LTP)</strong>
+    </p>
+
+    <p>
+        The
+        <a href="http://ltp.sourceforge.net/">LTP</a>
+        produces test suites for the Linux kernel.
+        Subscribe to the discussion list here
+        <a href="http://lists.sourceforge.net/lists/listinfo/ltp-list">here</a>.
+        There are list archives on
+        <a href="http://dir.gmane.org/gmane.linux.ltp">gmane</a>
+        and
+        <a href="http://marc.info/?l=ltp-list">marc</a>.
+    </p>
+    <p>
+        <strong>Kernel Newbies</strong>
+    </p>
+    <p>
+        Can be useful for asking questions on aspects of the kernel source that
+        you don't understand.
+    </p>
+
+    <p>
+        To subscribe, send a message containing the following <em>body</em> to
+        <span class="email">listar@nl.linux.org</span>:
+    </p>
+
+    <pre>    subscribe kernelnewbies </pre>
+
+    <p>
+        Archives of this list can be found on
+        <a href="http://dir.gmane.org/gmane.linux.kernel.kernelnewbies">gmane</a>
+        and
+        <a href="http://marc.info/?l=kernelnewbies">marc</a>.
+        See the
+        <a href="http://kernelnewbies.org/">kernelnewbies web site</a>
+        for more information.
+    </p>
+
+    <p>
+        <strong>libc-announce</strong>
+    </p>
+    <p>
+        This list announces each <em>glibc</em> release.
+        Subscribe by sending an email to
+        <span class="email">libc-announce-subscribe@sourceware.org</span>
+        or visiting <a href="http://sourceware.org/glibc">this page</a>.
+        There is a list archive
+        <a href="http://sources.redhat.com/ml/libc-announce/">here</a>.
+    </p>
+
+    <p>
+        <strong>libc-alpha</strong>
+    </p>
+    <p>
+        This is the development list for glibc.
+        Subscribe by sending an email to
+        <span class="email">libc-alpha-subscribe@sourceware.org</span>
+        or visiting <a href="http://sourceware.org/glibc">this page</a>.
+        There is a list archive
+        <a href="http://sources.redhat.com/ml/libc-alpha/">here</a>.
+    </p>
+
+    <p>
+        <strong>libc-help</strong>
+    </p>
+    <p>
+        This list is for asking general questions and getting help on
+        <em>glibc</em>.
+        Subscribe by sending an email to
+        <span class="email">libc-help-subscribe@sourceware.org</span>
+        or visiting <a href="http://sourceware.org/glibc">this page</a>.
+        There is a list archive
+        <a href="http://sourceware.org/ml/libc-help/">here</a>.
+    </p>
+
+
+<h3>Websites</h3>
+
+    <p>
+        These websites are useful because they in part include attempts
+        by others to summarize changes to the Linux kernel.
+    </p>
+
+    <ul>
+        <li>
+            <a href="http://lwn.net/">http://lwn.net/</a>.
+            The weekly kernel page is especially useful, since it summarizes
+            a lot of current and planned changes to the kernel.
+            <br>
+            <br>
+        </li>
+    
+        <li>
+            <a href="http://wiki.kernelnewbies.org/LinuxChanges">http://wiki.kernelnewbies.org/LinuxChanges</a>.
+            Summarizes major internal and interface changes for each
+            kernel release (starting sometime in the 2.6.x series).
+            <br>
+            <br>
+        </li>
+    </ul>
+
+
+<h3>Kernel releases</h3>
+
+    <p>
+        When a new kernel release is made, scan the
+        patch and ChangeLog, to see what important changes there have been.
+        This is quite a big job, and pretty much impossible to do thoroughly,
+        unless doing <em>man-pages</em> is your full time job,
+        but a bit of scripting
+        can help (e.g., to discard device driver stuff and
+        architecture-specific stuff other than for (say) x86 and PPC).
+    </p>
+
+
+<h3>Glibc releases</h3>
+
+    <p>
+        Just as for the kernel, when a new glibc release comes out,
+        scan the Changelog and the differences in the source code tree.
+        Reading the <span class="email">NEWS</span>
+        file in the glibc root directory also provides
+        information about important changes in a glibc release.
+    </p>
+    <p>
+        The following is useful to get a rough idea of what symbols
+        are new or changed in various glibc releases -- execute it
+        at the root of a glibc tree:
+    </p>
+    <strong>
+    <pre class="shell">
+    cat  $(find . -name 'Versions' |
+    egrep -v '/(s390|alpha|sparc|hurd|sh4|bsd|ia64|powerpc|x86_64)') |
+	    sed -n '/GLIBC/,/}/p' | sed 's/#.*//'| tr ';' '\012' |
+	    sed 's/^ *//' | sed 's/ *$//' | sed '/^$/d' |
+	    grep -v '^_' |
+	    awk '{ if ($1 ~ "^GLIBC_2.*") {
+	             tag = $1
+	           } else if ($1 ~ "^[a-z].*") {
+	             printf "%-32s %s\n", $1, tag
+	         }
+	    }' |
+	    sort -u
+    </pre>
+    </strong>
+
+
+<h3>Kernel bugzilla</h3>
+
+    <p>
+        The kernel.org bugzilla can be used to
+        <a href="reporting_bugs.html">report</a> <em>man-pages</em> bugs.
+        The list of unresolved bugs in the bugzilla can be seen
+        <a href="https://bugzilla.kernel.org/buglist.cgi?query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&emailassigned_to1=1&emailtype1=substring&email1=documentation_man-pages@kernel-bugs.osdl.org">here</a>.
+    </p>
+
+<h3>Distribution-specific bug tracking systems</h3>
+
+<h4>Debian</h4>
+
+    <p>
+        <a href="http://www.debian.org/">Debian</a>
+        makes it easy for upstream maintainers to subscribe to bug
+        reports for man pages.
+        To do this, visit
+        <a href="http://packages.qa.debian.org/">http://packages.qa.debian.org/</a>
+        and look for the Debian source packages
+        <em>manpages</em> and <em>manpages-dev</em>.
+        (For reasons that don't really make sense to me, Debian splits
+        the upstream <em>man-pages</em> package into two parts,
+        one containing the Sections 4, 5, 7 pages,
+        and the other containing Sections 2 and 3.)
+    </p>
+
+    <p>
+        A current list of
+        <a href="http://www.debian.org/">Debian</a>
+        bug reports for <em>man-pages</em> can be viewed
+        <a href="http://bugs.debian.org/cgi-bin/pkgreport.cgi?src=manpages">here</a>.
+    </p>
+
+    <p>
+        Debian even provides an email interface that allows an upstream
+        maintainer to manipulate Debian bug reports (using the "tags"
+        command; see
+        <a href="http://www.debian.org/Bugs/server-control">http://www.debian.org/Bugs/server-control</a>).
+    </p>
+
+    <p>
+            The Debian developer/upstream-centric view of manpages can be seen
+            <a href="http://packages.qa.debian.org/manpages">here</a>.
+    </p>
+
+    <p>
+        Every now and then it may be worth reviewing the Debian downstream
+        diff patches applied to <em>man-pages</em>, to see if there's anything they
+        should have pushed upstream, but didn't.
+        Have a look at the diff patches that are available by
+        following the "unstable" release links at
+        <a href="http://packages.debian.org/manpages">http://packages.debian.org/manpages</a>
+        and
+        <a href="http://packages.debian.org/manpages">http://packages.debian.org/manpages-dev</a>.
+        Or look at the web <a href="http://patch-tracker.debian.org/package/manpages">patchtracker</a>.
+    </p>
+    <p>
+        The following mail address reaches people with an interest in man pages at Debian:
+        <span class="email">manpages@packages.debian.org</span>.
+    </p>
+
+
+
+<h4>Ubuntu</h4>
+
+    <p>
+        <a href="http://www.ubuntu.com/">Ubuntu</a> uses Launchpad for
+        manpages (<a href="https://bugs.launchpad.net/ubuntu/+source/manpages">bugs</a>, 
+        <a href="https://launchpad.net/ubuntu/+source/manpages">package</a>)
+        and manpages-posix
+        (<a href="https://bugs.launchpad.net/ubuntu/+source/manpages-posix">bugs</a>,
+        <a href="https://launchpad.net/ubuntu/+source/manpages-posix">package</a>).
+        There are links on the "bugs" pages to allow subscribing to bug reports.
+    </p>
+
+
+<h4>Red Hat</h4>
+
+    <p>
+        <a href="http://www.redhat.com/">Red Hat</a>
+        provides a
+        <a href="https://bugzilla.redhat.com/bugzilla/buglist.cgi?component=man-pages&&order=bugs.bug_id"><em>man-pages</em> bugzilla component</a>.
+    </p>
+    <p>
+        URL for Fedora package:
+        <a href="http://koji.fedoraproject.org/koji/packageinfo?packageID=401">http://koji.fedoraproject.org/koji/packageinfo?packageID=401</a>.
+        From there, you can reach the RPM files, and unpack them to see the
+        diffs from upstream, using:
+    </p>
+    <pre class="shell">    rpm2cpio foo.rpm | cpio -idmv --no-absolute-filenames </pre>
+
+    <p>
+        Downstream Git repo for Red Hat patches:
+    </p>
+
+    <pre class="shell">    git clone git://pkgs.fedoraproject.org/man-pages.git </pre>
+
+
+
+<h4>Fedora</h4>
+
+    <p>
+            It is possible to subscribe to Fedora man-pages bug reports, as follows:
+    </p>
+
+    <ul>
+        <li>
+            Get a Fedora account at <a href="https://admin.fedoraproject.org/accounts">https://admin.fedoraproject.org/accounts</a>.
+        </li>
+        <li>
+            Go to the <em>man-pages</em> package in
+            <a href="https://admin.fedoraproject.org/pkgdb/acls/name/man-pages">the package database</a>,
+            log in, and for each branch (Fedora NN to Fedora devel) click
+            "Add myself to the package" and then check watchbugzilla checkbox.
+            This has to be done only once,
+            preferences for new Fedoras are inherited from Fedora devel branch.
+            Once this is done, you will be in the CC list of
+            every new bug created for <em>man-pages</em> in Fedora.
+        </li>
+        <li>
+            A list of currently open Fedora <em>man-pages</em> bugs can be found
+            <a href="https://bugzilla.redhat.com/buglist.cgi?list_id=1102610&query_format=advanced&bug_status=NEW&bug_status=ASSIGNED&component=man-pages&product=Fedora">here</a>.
+        </li>
+    </ul>
+
+
+
+<h4>Other</h4>
+
+    <p>
+        Perhaps some other distributions have similar facilities,
+	but these are the
+        only ones I know about so far.
+    </p>
+
+
+<h2>Testing new features</h2>
+
+<h3>Test programs</h3>
+    <p>
+        Writing test programs (in C) is an essential part of writing man pages.
+        It verifies the author's understanding of what is being
+        documented and also finds bugs in the kernel and glibc.
+        In some cases, example programs are also suitable for inclusion
+        in the man pages themselves.
+    </p>
+
+
+
+<h3>Testing new kernel features</h3>
+
+    <p>
+        To follow the development curve closely, download release candidate (rc)
+        kernels from
+        <a href="http://www.kernel.org/pub/linux/kernel/v3.0/testing/">http://www.kernel.org/pub/linux/kernel/v3.0/testing/</a>.
+        Build and install the kernel, and write programs to test new features.
+        Since the declarations of new system calls probably
+        won't yet be in your (g)libc, the use of
+        <span class="func">syscall()</span>
+        may be required; see the
+        <span class="man-page">
+        <a href="http://man7.org/linux/man-pages/man2/syscall.2.html">syscall(2)</a>
+        </span>
+        man page.
+    </p>
+
+
+
+<h2>All the world is not Linux</h2>
+
+    <p>
+        It is not enough to document what Linux does.
+        Programmers writing portable applications need to know about places where
+        Linux differs from other UNIX implementations, and about
+        places where it doesn't adhere to standards.
+    </p>
+
+
+<h3>Test programs</h3>
+
+    <p>
+        If in doubt about portability, write a test program and run it
+        on a few other systems.
+        As a starting point, testing say Solaris,
+        FreeBSD, and HP-UX is likely to reveal most of the range of
+        differences that occur on other implementations.
+        Bonus points for testing on other BSDs, on AIX, etc.
+    </p>
+<!--
+    <p>
+        If you don't have access to other systems, there are shell
+        guest accounts for various systems available on the net.
+        See, especially,
+        <a href="http://www.testdrive.hp.com/">http://www.testdrive.hp.com/</a>.
+    </p>
+-->
+
+<h3>Standards</h3>
+
+    <p>
+        Join the
+        <a  href="http://www.opengroup.org/austin/">Austin group</a>.
+        (Membership is free.)
+    </p>
+
+    <p>
+        Get electronic copies of current and past UNIX standards, especially
+        the current POSIX.1-2008/SUSv4 standard, available in
+        PDF format to members of the
+        <a  href="http://www.opengroup.org/austin/">Austin group</a>,
+        and
+        <a href="http://www.unix.org/version3/online.html">browsable online</a>.
+        Note also that section 3p
+        of the man pages includes pages containing the
+        specifications for all functions in POSIX.1-2001 (e.g., try
+        <span class="cmd">man 3p stat</span>).
+    </p>
+
+    <p>
+        Other standards to look out for are SUSv1, SUSv2, and the SVID
+        (System V Interface Definition), all of which are available in
+        electronic form.
+    </p>
+
+    <p>
+        And get the
+        <a href="http://www.open-std.org/jtc1/sc22/wg14/www/standards">C99 standard</a>.
+    </p>
+    <p>
+        And have a look at the
+        <a href="http://www.linux-foundation.org/en/LSB">LSB</a>
+        (<a href="http://ldn.linuxfoundation.org/lsb/lsb4-resource-page">LSB 4.0</a>,
+        <a href="http://refspecs.freestandards.org/LSB_3.2.0/allspecs.shtml">LSB 3.2</a>).
+    </p>
+
+
+
+<h3>Read man pages for other systems</h3>
+
+    <p>
+        Get man pages for as many other UNIX systems (including past and
+        current versions) as you can find.
+        Check those man pages to see
+        what differences there are from Linux.
+        They'll also provide ideas
+        about topics that should be covered in corresponding Linux man pages.
+        Don't violate copyrights by copying text from man pages
+        whose licenses prohibit re-use.
+    </p>
+
+
+
+<h3>Glibc <em>info</em></h3>
+
+    <p>
+        Sometimes there is useful information to be found in the
+        <span class="man-page">info(1)</span>
+        documentation for a particular function
+        (if the <em>info</em> documentation exists...).
+        Always worth checking.
+    </p>
+
+
+
+<h3>Header files on other implementations</h3>
+
+    <p>
+        It can be handy to have a set of
+        <span class="pathname">/usr/include</span>
+        trees from various other implementations.
+        Grepping all of these trees can give some clues about interfaces that
+        are/aren't present on other UNIX implementations.
+    </p>
+
+
+
+<h3>Source code</h3>
+
+    <p>
+        The source code of some other UNIX implementations is available, and
+        useful to study in order to determine undocumented details of
+        behaviour on those systems.
+    </p>
+
+    <p>
+        Instructions on how to get the source code of Open Solaris can be found
+        <a href="http://dlc.sun.com/osol/on/downloads/hg-build-snapshots/">here</a>.
+        You'll need to install Mercurial ("hg").
+    </p>
+    <p>
+        The FreeBSD source code is available via anonymous CVS, as described
+        <a href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/anoncvs.html">here</a>.
+        You'll want a command something like the following:
+    </p>
+    <pre class="shell">    $ <strong>cvs -d freebsdanoncvs@anoncvs.FreeBSD.org:/home/ncvs co src</strong> </pre>
+
+
+<h2>Get set up on kernel.org infrastructure</h2>
+
+    <p>
+            Look <a href="http://linux-man-pages.blogspot.co.nz/2012/02/reestablishing-kernelorg-access.html">here</a>.
+    </p>
+
+<h2>Making <em>man-pages</em> releases</h2>
+
+
+<h3>Uploading files</h3>
+
+    <p>
+        Release tarballs are made available at
+        <a href="http://www.kernel.org/pub/linux/docs/man-pages/">http://www.kernel.org/pub/linux/docs/man-pages/</a>.
+        Files are uploaded using <em>kup</em>.
+        Look <a href="http://linux-man-pages.blogspot.co.nz/2012/02/reestablishing-kernelorg-access.html">here</a>.
+    </p>
+
+
+<h4>man-pages web page</h4>
+
+    <p>
+        The <em>man-pages</em> website resides at
+        <a href="http://www.kernel.org/doc/man-pages/">http://www.kernel.org/doc/man-pages/</a>.
+        Files are uploaded using <em>kup</em>.
+        Look <a href="http://linux-man-pages.blogspot.co.nz/2012/02/reestablishing-kernelorg-access.html">here</a>.
+    </p>
+
+
+<h3>Release notifications</h3>
+
+    <ul>
+        <li>
+            <strong>Contributors, maintainers, translators:</strong>
+            Send a release message that includes the change
+            log to all of the contributors to this release.
+            CC the message to
+            <span class="email">linux-man@vger.kernel.org</span>
+            and to a small group of people
+            (e.g., maintainers, translators) who like
+            to get notification of *every* <em>man-pages</em> release.
+            I manually maintain a list of those people.
+            <br>
+            <br>
+        </li>
+
+        <li>
+            <strong>LKML:</strong>
+            send a release note to
+            <span class="email">linux-kernel@vger.kernel.org</span>,
+            noting those changes that are of
+            special relevance to readers of LKML.
+        </li>
+    </ul>
+
+
+<h3>Release philosophy</h3>
+
+    <p>
+        If you make sweeping <em>formatting</em>
+        changes to a large number of pages,
+        separate them out into their own release that contains
+        minimal <em>content</em> changes.
+        This makes it easier for the people
+        that want to verify content changes independently of the change log.
+        Yes, some people actually
+        <span class="cmd">diff</span>
+        each release to see what changed;
+        for example, some downstream maintainers and translators of
+        the man pages sometimes like to do this.
+    </p>
+
+
+<h2>Being a good free software citizen</h2>
+
+
+<h3>Reporting kernel and glibc bugs</h3>
+    <p>
+        Testing kernel and glibc features while writing man pages will
+        inevitably uncover bugs.
+        Report them.
+    </p>
+
+    <p>
+        For the kernel, a report can either go into the
+        <a href="http://bugzilla.kernel.org/">kernel bugzilla</a>,
+        or, if the report is of general interest
+        (e.g., a significant bug in a new system call), it may be worthwhile
+        submitting a note to the relevant developer
+        (e.g., the author of the system call) and CCing LKML
+        (<span class="email">linux-kernel@vger.kernel.org</span>).
+    </p>
+
+    <p>
+        Bug reports for glibc go here:
+        <a href="http://sourceware.org/bugzilla">http://sourceware.org/bugzilla</a>.
+        This is also the place for bug reports for glibc
+        <span class="man-page">info(1)</span>
+        documents.
+    </p>
+
+
+<h2>Some history</h2>
+
+    <p>
+        The <em>man-pages</em> project was begun in 1993 by
+        <a href="http://www.cs.unc.edu/~faith/">Rik Faith</a>, who created
+        releases 1.0 through to 1.5.
+    </p>
+
+    <p>
+        Rik Faith was succeeded by
+        <a href="http://www.win.tue.nl/~aeb">Andries Brouwer</a>
+        (<span class="email">aeb</span>),
+        who took over in June 1995, and continued for more than nine years,
+        creating releases 1.6 through to 1.70.
+    </p>
+
+    <p>
+        The current maintainer, Michael Kerrisk
+        (<span class="email">mtk</span>),
+        took over in November 2004, starting with release 2.00.
+    </p>
+
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>
