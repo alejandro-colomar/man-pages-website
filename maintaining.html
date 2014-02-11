@@ -102,7 +102,8 @@ Maintaining Linux <em>man-pages</em>
         Once upon a time, <em>man-pages</em> also used to document
         Linux libc details (libc4, libc5),
         and there are still some vestiges of that intent in existing pages,
-        but Linux libc is pretty much dead nowadays (see
+        but Linux libc has been dead for quite a long time now
+       	(see
         <a href="http://en.wikipedia.org/wiki/GNU_C_Library#A_temporary_fork">here</a>
         and
         <a href="http://web.archive.org/web/20040411191201/http://people.redhat.com/~sopwith/old/glibc-vs-libc5.html">here</a>
@@ -144,6 +145,8 @@ Maintaining Linux <em>man-pages</em>
             To get a copy of the <span class="func">linux-next</span> tree:
             <!-- https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/ -->
             <pre class="shell">$ <strong>git clone git://git.kernel.org/pub/scm/linux/kernel/git/sfr/linux-next.git linux-next</strong></pre>
+	    To update that tree:
+	    <pre class="shell">$ <strong>git fetch linux-next && git fetch --tags linux-next && git remote update</strong></pre>
         </li>
         <li>
             Keep a directory that contains every minor release patch ever made
@@ -167,7 +170,7 @@ Maintaining Linux <em>man-pages</em>
     <p>
         For browsing the kernel source code,
         <a href="http://lxr.linux.no/">lxr</a>
-        can be useful!
+        can be useful.
         (Online browsable versions of various free kernels can be found at
         <a href="http://fxr.watson.org/">http://fxr.watson.org/</a>.)
     </p>
@@ -443,7 +446,7 @@ http://dir.gmane.org/gmane.linux.network.general
         unless doing <em>man-pages</em> is your full time job,
         but a bit of scripting
         can help (e.g., to discard device driver stuff and
-        architecture-specific stuff other than for (say) x86 and PPC).
+        architecture-specific stuff other than for (say) x86 and ARM).
     </p>
 
 
