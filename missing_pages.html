@@ -66,7 +66,7 @@ Linux <em>man-pages</em>: &nbsp;
 <li>
     Follow the existing formatting conventions for man pages.
     Some information about formatting is provided in the
-    <span class="man-page"><a href="http://man7.org/linux/man-pages/man7/man-pages.7.html">man(7)</a></span>
+    <span class="man-page"><a href="http://man7.org/linux/man-pages/man7/man.7.html">man(7)</a></span>
     and
     <span class="man-page"><a href="http://man7.org/linux/man-pages/man7/man-pages.7.html">man-pages(7)</a></span>
     man pages.
@@ -278,6 +278,97 @@ Linux <em>man-pages</em>: &nbsp;
 
 
 
+<h3>GNU C library commands</h3>
+
+<p>
+   The GNU C library provides a few commands (executables, scripts),
+   such as
+   <span class="man-page">ldd(1)</span>
+   and
+   <span class="man-page">time(1)</span>.
+   These commands are documented in <em>man-pages</em>, in sections 1 and 8.
+   The following pages are missing:
+</p>
+<table border=1 cellspacing=0 cellpadding=5>
+  <tr>
+    <td align="center">
+      <strong>Command</strong>
+    </td>
+    <td align="center">
+      <strong>Since glibc<br>version</strong>
+    </td>
+    <td align="center">
+      <strong>Notes</strong>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">gencat(1)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">getconf(1)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">localedef(1)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">makedb(1)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">mcheck(1)</span>
+    </td>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <span class="man-page">pldd(1)</span>
+    </td>
+    <td>
+        2.15
+    </td>
+    <td>
+      &nbsp;
+    </td>
+  </tr>
+</table>
+
 <h3>Library Functions</h3>
 <p>
     A list of undocumented (GNU) C library functions is given below.
@@ -467,30 +558,6 @@ Probably should not be documented:
 
   <tr>
     <td>
-      <span class="man-page">isalnum_l(3)</span>
-      <br>
-      <span class="man-page">isalpha_l(3)</span>
-      <br>
-      <span class="man-page">isascii_l(3)</span>
-      <br>
-      <span class="man-page">isblank_l(3)</span>
-      <br>
-      <span class="man-page">iscntrl_l(3)</span>
-      <br>
-      <span class="man-page">isdigit_l(3)</span>
-      <br>
-      <span class="man-page">isgraph_l(3)</span>
-      <br>
-      <span class="man-page">islower_l(3)</span>
-      <br>
-      <span class="man-page">isprint_l(3)</span>
-      <br>
-      <span class="man-page">ispunct_l(3)</span>
-      <br>
-      <span class="man-page">isspace_l(3)</span>
-      <br>
-      <span class="man-page">isupper_l(3)</span>
-      <br>
       <span class="man-page">iswalnum_l(3)</span>
       <br>
       <span class="man-page">iswalpha_l(3)</span>
@@ -553,15 +620,7 @@ Probably should not be documented:
       <br>
       <span class="man-page">toascii_l(3)</span>
       <br>
-      <span class="man-page">tolower_l(3)</span>
-      <br>
-      <span class="man-page">toupper_l(3)</span>
-      <br>
       <span class="man-page">towctrans_l(3)</span>
-      <br>
-      <span class="man-page">towlower_l(3)</span>
-      <br>
-      <span class="man-page">towupper_l(3)</span>
       <br>
       <span class="man-page">wcscasecmp_l(3)</span>
       <br>
@@ -597,25 +656,23 @@ Probably should not be documented:
     </td>
     <td>
       Locale functions -- See POSIX.1-2008 specification
-    </td>
-  </tr>
 
-  <tr>
-    <td>
-      <span class="man-page">uselocale(3)</span>,</span>
-      <span class="man-page">newlocale(3)</span>,</span>
-      <span class="man-page">duplocale(3)</span>,</span>
-      <span class="man-page">freelocale(3)</span>
-    </td>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-      These functions are in POSIX.1-2008;
-      made public in glibc 2.3
-      (there was an earlier "unstable" implementation in glibc,
-      with function names prefixed with "__").
-      The feature test macro requirements changed in glibc 2.10.
+      <br />
+      <br />
+      In most cases, these functions can be integrated into the existing
+      man pages for the corresponding traditional functions.
+      For examples of what needs to be done, see the
+      <span class="man-page">isalpha(3)</span>,
+      <span class="man-page">toupper(3)</span>,
+      <span class="man-page">towlower(3)</span>,
+      and 
+      <span class="man-page">towupper(3)</span>
+      man pages.
+      <br />
+      <br />
+      <span class="man-page">toascii_l(3)</span> is nonstandard,
+      and has different FTM requirements.
+      The same is probably also true of some of the other functions.
     </td>
   </tr>
 
@@ -1675,8 +1732,7 @@ Probably should not be documented:
     <td colspan=3 align="center">
       Various wide-character functions
       <br>
-      (with their traditional equivalents
-      mentioned in parentheses)
+      (with their traditional equivalents mentioned in parentheses)
     </td>
   </tr>
 
