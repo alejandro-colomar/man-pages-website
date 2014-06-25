@@ -1,0 +1,128 @@
+<html>
+<head>
+<link rel=stylesheet type="text/css" href="style.css" title="style">
+<title>
+Working with linux-next
+</title>
+</head>
+
+<body>
+
+<!--BEGIN-LINKS-->
+<form method="get" action="http://www.google.com/search">
+<table border=0 cellpadding=0 cellspacing=0 width="100%">
+<tr>
+<td align="left">
+<font size="-1">
+
+Linux <em>man-pages</em>: &nbsp;
+<a href="./index.html">home</a> | 
+<a href="./contributing.html">contributing</a> | 
+<a href="./reporting_bugs.html">bugs</a> | 
+<a href="./patches.html">patches</a> | 
+<a href="./download.html">download</a> &nbsp; || &nbsp; 
+<a href="http://man7.org/linux/man-pages/index.html">online pages</a></font>
+</td>
+<td align="right">
+<input type="text" name="q" size=10 maxlength=255 value="">
+<input type="hidden" name="sitesearch" value="man7.org/linux/man-pages">
+<input type="submit" name="sa" value="Search online pages">
+</td>
+</tr>
+</table>
+</form>
+<!--END-LINKS-->
+
+
+<h1>Working with linux-next</h1>
+
+<p>
+    The <a href="http://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git"><em>linux-next</em> tree</a>
+    is the holding area for patches aimed at the next kernel merge window.
+    If you're doing bleeding edge kernel development,
+    you may want to work from that tree rather than Linus Torvalds'
+    mainline tree.
+</p>
+
+<h2>Initial set up</h2>
+<p>
+    If you haven't already done so,
+    first clone a copy of the
+    <a href="http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git">mainline Linux Git repository</a>:
+</p>
+<pre>    $ <strong>git clone https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git</strong>
+          # or: git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+    Cloning into 'linux'...
+    ...</pre>
+    
+<p>
+    Then add a remote tracking branch for <em>linux-next</em>:
+</p>
+<pre>    $ <strong>cd linux</strong>
+    $ <strong>git remote add linux-next https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git</strong>
+                          # or: git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+</pre>
+    
+<p>
+    Fetch <em>linux-next</em> plus tags    
+</p>
+<pre>    $ <strong>git fetch linux-next</strong>
+    ...
+    $ <strong>git fetch --tags linux-next</strong>
+    ...</pre>
+
+<h2>Regular tracking</h2>
+
+<p>
+    Update <em>linux-next</em>:
+</p>
+<pre>    $ <strong>git checkout master</strong>      # to be safe
+    ...
+    $ <strong>git remote update</strong>
+    ...</pre>
+
+<p>
+    List (recent) <em>linux-next</em> tags:
+</p>
+
+<pre>    $ <strong>git tag -l "next-*" | tail</strong>
+    next-20140612
+    next-20140613
+    next-20140616
+    next-20140617
+    next-20140618
+    next-20140619
+    next-20140620
+    next-20140623
+    next-20140624
+    next-20140625 </pre>
+
+<p>
+    Choose the <em>linux-next</em> version that you will work from,
+    and create a local branch based on that version:
+</p>
+<pre>    $ <strong>git checkout -b my_local_branch next-20140625</strong>
+    Switched to a new branch 'my_local_branch'</pre>
+
+<!--BEGIN-STATCOUNTER-->
+<!-- SITETRACKING.linux_man-pages -->
+<!-- Start of StatCounter Code -->
+<script type="text/javascript">
+var sc_project=5618989;
+var sc_invisible=1;
+var sc_partition=60;
+var sc_click_stat=1;
+var sc_security="4f8507d7";
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="customisable counter"
+href="http://www.statcounter.com/free_hit_counter.html"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/5618989/0/4f8507d7/1/" alt="customisable
+counter" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!--END-STATCOUNTER-->
+</body>
+</html>
