@@ -154,11 +154,6 @@ Maintaining Linux <em>man-pages</em>
             Thereafter, just update the copy using <span class="func">git pull</span>.
             <br>
             <br>
-            To get a copy of the <span class="func">linux-next</span> tree:
-            <!-- https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/ -->
-            <pre class="shell">$ <strong>git clone git://git.kernel.org/pub/scm/linux/kernel/git/sfr/linux-next.git linux-next</strong></pre>
-	    To update that tree:
-	    <pre class="shell">$ <strong>git fetch linux-next && git fetch --tags linux-next && git remote update</strong></pre>
         </li>
         <li>
             Keep a directory that contains every minor release patch ever made
@@ -234,6 +229,16 @@ Maintaining Linux <em>man-pages</em>
         There are a few ways to do this.
     </p>
 
+
+<h3>Looking ahead: <em>linux-next</em></h3>
+
+<p>
+    The <a href="http://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git"><em>linux-next</em> tree</a>
+    is the holding area for patches aimed at the next kernel merge window.
+    It can be useful to track what's going on there,
+    in order to get some idea of upcoming changes to the kernel.
+    (<a href="linux-next.html">Some notes on working with <em>linux-next</em></a>.)
+</p>
 
 <h3>Git</h3>
 
