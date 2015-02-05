@@ -37,21 +37,33 @@ patches |
 <h1>Patches for <em>man-pages</em></h1>
 
 <p>
-  If you know how to fix a problem in a man page, then send a patch to
-  <blockquote>
-      <span class="email">mtk.manpages@gmail.com</span>
-  </blockquote>
-  and CC
-  <blockquote>
-      <span class="email">linux-man@vger.kernel.org</span>
-  </blockquote>
-  (If you see a problem, but don't know how to fix it, look
-  <a href="reporting_bugs.html">here</a>.)
+  If you know how to fix a problem in a man page (if not, look
+  <a href="reporting_bugs.html">here</a>), then send a patch,
+  and <strong>make sure that you</strong>:
 </p>
+<ul>
+    <li>
+        Put <span class="email">mtk.manpages@gmail.com</span> in "To:".
+    </li>
+    <li>
+        Put <span class="email">linux-man@vger.kernel.org</span> into "CC:".
+    </li>
+    <li>
+        Include the string "[patch]" in the subject line
+    </li>
+</ul>
 
 
 <p>
-  Please note the following points:
+  <strong>The above is the minimum needed to ensure that
+  there's some chance I'll see the patch.</strong>
+  (If you did that, and I do not respond, then ping me.
+  Unfortunately, I get more mail than I can sometimes deal with,
+  and things do get lost.)
+</p>
+<p>
+  <strong>To make your patch even more useful</strong>,
+  please note the following points:
 </p>
 
 <ul>
@@ -70,6 +82,81 @@ patches |
 <pre>
     [patch] shmop.2: Add "(void *)" cast to RETURN VALUE </pre>
   </li>
+  <li>
+      For <strong>nontrivial patches</strong>:
+      <br>
+      <br>
+  </li>
+  <ul>
+      <li>
+      <strong>Describe how you obtained the information in your patch</strong>:
+      was it by reading (or
+      writing) the relevant kernel or (g)libc source code; by writing a
+      test program (send it with the patch, if you want, and if it is clear and
+      simple to use); from a standards document;
+      from other documentation; from a mailing list or
+      Usenet thread (please provide a URL if possible)?
+      <br>
+      <br>
+    </li>
+    
+    <li>
+      Where relevant, include source code comments that
+      <strong>cite commit hashes</strong> for relevant kernel or glibc changes:
+  <pre>
+      .\" commit <40-character-git-hash></pre>
+      Doing so can be useful to help verify details of the patch,
+      or for later historical reference.
+      <br>
+      <br>
+    </li>
+  
+    <li>
+      <strong>Please attempt to find and CC relevant developers.</strong>
+      If your patch documents a substantial feature or change, and you
+      know which developers added the feature or made the change
+      that your patch documents, please CC them on the patch;
+      with luck they may review and fix your patch.
+      If you don't know who the developers are, you may be
+      able to discover that information from mailing list archives
+      (<a hrf="http://gmane.org/">gmane.org</a> is especially helpful)
+      or from Git logs or logs in other version control systems.
+      Obviously, if you are the developer of the feature being documented
+      in a <em>man-pages</em> patch, please identify yourself as such.
+      <br>
+      <br>
+    </li>
+
+    <li>
+      <strong>Please consider CCing relevant mailing lists</strong>.
+      If your patch documents a substantial feature or change, please
+      consider CCing relevant mailing lists on your patch.
+      With luck, subscribers on the mailing list might review your patch.
+      Relevant mailing lists may include:
+      <br>
+      <br>
+      <ul>
+      <li>
+        <span class="email">linux-kernel@vger.kernel.org</span> for patches to system call pages 
+      </li>
+      <li>
+        <span class="email">netdev@vger.kernel.org</span> for patches to pages relating to networking and sockets
+      </li>
+      </ul>
+      <br>
+      The GNU C library developers
+        <a href="http://thread.gmane.org/gmane.comp.lib.glibc.alpha/19564/focus=20294">don't consider</a>
+      <em>man-pages</em> to
+      be any sort of official documentation for the library.
+      However, if you have a new page for Section 3 or a substantial addition
+      to one of those pages, you might consider CCing
+      <span class="email">libc-alpha@sourceware.org</span>;
+      there are some friendly folk there who may review or comment.
+      <br>
+      <br>
+    </li>
+  </ul>
+
   <li>
     For <strong>trivial patches</strong>,
     I use a number of keywords that are processed by
@@ -108,143 +195,81 @@ patches |
   </li>
 
   <li>
-    <strong>Describe how you obtained the information in your patch</strong>:
-    was it by reading (or
-    writing) the relevant kernel or (g)libc source code; by writing a
-    test program (send it with the patch, if you want, and if it is clear and
-    simple to use); from a standards document;
-    from other documentation; from a mailing list or
-    Usenet thread (please provide a URL if possible)?
-    <br>
-    <br>
+    <strong>Some general tips</strong> on how to make my life easier:
+      <br>
+      <br>
   </li>
-  
-  <li>
-    <strong>Please attempt to find and CC relevant developers.</strong>
-    If your patch documents a substantial feature or change, and you
-    know which developers added the feature or made the change
-    that your patch documents, please CC them on the patch;
-    with luck they may review and fix your patch.
-    If you don't know who the developers are, you may be
-    able to discover that information from mailing list archives
-    (<a hrf="http://gmane.org/">gmane.org</a> is especially helpful)
-    or from Git logs or logs in other version control systems.
-    Obviously, if you are the developer of the feature being documented
-    in a <em>man-pages</em> patch, please identify yourself as such.
-    <br>
-    <br>
-  </li>
-
-  <li>
-    <strong>Please consider CCing relevant mailing lists</strong>.
-    If your patch documents a substantial feature or change, please
-    consider CCing relevant mailing lists on your patch.
-    With luck, subscribers on the mailing list might review your patch.
-    Relevant mailing lists may include:
-    <br>
-    <br>
-    <ul>
+  <ul>
     <li>
-      <span class="email">linux-kernel@vger.kernel.org</span> for patches to system call pages 
+      <strong>Send logically separate patches</strong> (e.g., for unrelated pages,
+      or for logically separate issues in the same page)
+      as separate mails.
+      <br>
+      <br>
     </li>
     <li>
-      <span class="email">netdev@vger.kernel.org</span> for patches to pages relating to networking and sockets
+      <strong>Patches that contain correctly formatted
+      <em>groff</em> are preferred</strong>.
+      The basics of
+      <em>groff</em>
+      are pretty simple, and you can probably learn as much as you need
+      by just looking at the source of the page to be patched;
+      see also the
+      <span class="man-page">groff_man(7)</span>
+      and
+      <span class="man-page">
+      <a href="http://man7.org/linux/man-pages/man7/man-pages.7.html">man-pages(7)</a>
+      </span>
+      man pages.
+      If you are uncertain of
+      <em>groff</em>
+      then send a patch that uses some plain text.
+      <br>
+      <br>
     </li>
-    </ul>
-    <br>
-    The GNU C library developers
-    <a href="http://thread.gmane.org/gmane.comp.lib.glibc.alpha/19564/focus=20294">don't consider</a>
-    <em>man-pages</em> to
-    be any sort of official documentation for the library.
-    However, if you have a new page for Section 3 or a substantial addition
-    to one of those pages, you might consider CCing
-    <span class="email">libc-alpha@sourceware.org</span>;
-    there are some friendly folk there who may review or comment.
-    <br>
-    <br>
-  </li>
-
-  <li>
-    <strong>Patches that contain correctly formatted
-    <em>groff</em> are preferred</strong>.
-    The basics of
-    <em>groff</em>
-    are pretty simple, and you can probably learn as much as you need
-    by just looking at the source of the page to be patched;
-    see also the
-    <span class="man-page">groff_man(7)</span>
-    and
-    <span class="man-page">
-    <a href="http://man7.org/linux/man-pages/man7/man-pages.7.html">man-pages(7)</a>
-    </span>
-    man pages.
-    If you are uncertain of
-    <em>groff</em>
-    then send a patch that uses some plain text.
-    <br>
-    <br>
-  </li>
-
-  <li>
-    <strong>Make patches against the latest version of the man page</strong>.
-    For information on downloading the latest tarball, or pulling from the 
-    <em>man-pages</em>
-    <a href="http://git-scm.com/">Git</a> repository, see the
-    <a href="download.html">download</a> page.
   
-    <blockquote>
-      If the man page that you want to patch is not in the tarball or
-      Git repository,
-      that's because it comes from a package other than <em>man-pages</em>;
-      in that case, you should look
-      <a href="man_pages_other.html">here</a>.
-    </blockquote>
-  </li>
-  
-  <li>
-    In the body of the mail message,
-    <strong>identify the
-    <em>man-pages</em>
-    version</strong> against which the patch applies.
-    <br>
-    <br>
-  </li>
-  
-  <li>
-    Where relevant, include source code comments that
-    <strong>cite commit hashes</strong> for relevant kernel or glibc changes:
-<pre>
-    .\" commit <40-character-git-hash></pre>
-    Doing so can be useful to help verify details of the patch,
-    or for later historical reference.
-    <br>
-    <br>
-  </li>
-  
-  <li>
-    <strong>Send patches in
-    <span class="cmd">diff -u</span>
-    format</strong>, inline inside the mail message
-    is usually best; if it is a very long patch then send it both inline
-    and as an attachment.
-    Since the
-    <em>man-pages</em>
-    project
-    uses Git, you may find it useful to employ
-    <span class="cmd">git-send-email</span>
-    or
-    <span class="cmd">git-format-patch</span>.
-    <br>
-    <br>
-  </li>
-  
-  <li>
-    <strong>Send logically separate patches</strong> (e.g., for unrelated pages,
-    or for logically separate issues in the same page)
-    as separate mails.
-    <br>
-    <br>
-  </li>
+    <li>
+      <strong>Make patches against the latest version of the man page</strong>.
+      For information on downloading the latest tarball, or pulling from the 
+      <em>man-pages</em>
+      <a href="http://git-scm.com/">Git</a> repository, see the
+      <a href="download.html">download</a> page.
+    
+      <blockquote>
+        If the man page that you want to patch is not in the tarball or
+        Git repository,
+        that's because it comes from a package other than <em>man-pages</em>;
+        in that case, you should look
+        <a href="man_pages_other.html">here</a>.
+      </blockquote>
+    </li>
+    
+    <li>
+      In the body of the mail message,
+      <strong>identify the
+      <em>man-pages</em>
+      version</strong> against which the patch applies.
+      <br>
+      <br>
+    </li>
+    
+    <li>
+      <strong>Send patches in
+      <span class="cmd">diff -u</span>
+      format</strong>, inline inside the mail message
+      is usually best; if it is a very long patch then send it both inline
+      and as an attachment.
+      Since the
+      <em>man-pages</em>
+      project
+      uses Git, you may find it useful to employ
+      <span class="cmd">git-send-email</span>
+      or
+      <span class="cmd">git-format-patch</span>.
+      <br>
+      <br>
+    </li>
+  </ul>
   
 <!--
   <li>
@@ -258,11 +283,25 @@ patches |
     so just leave them be.
   </li>
 -->
+
   <li>
-    Don't try to patch the COLOPHON section of a page in
-    one of the release tarballs. That text is autogenerated
-    as part of the release process.
+    Some <strong>things that you don't need to do</strong>:
+      <br>
+      <br>
   </li>
+  <ul>
+    <li>
+      Don't try to patch the COLOPHON section of a page in
+      one of the release tarballs. That text is autogenerated
+      as part of the release process.
+      <br>
+      <br>
+    </li>
+    <li>
+      You don't need to update the page timestamp (".TH" line).
+      My release scripts do that automatically.
+    </li>
+  </ul>
 
 </ul>
 
