@@ -134,15 +134,11 @@ Maintaining Linux <em>man-pages</em>
     <p>
         You can find nearly every kernel release ever made at
         <a href="http://www.kernel.org/">http://www.kernel.org/</a>.
-        At the very least, you will probably find it useful to:
     </p>
-
-    <ul>
-        <li>
-            Keep up-to-date trees for the latest 2.2.x, 2.4.x, and 3.x kernels.
-            In fact, given the modern Linux development model,
+    <p>
+            Given the modern Linux development model,
             it can save time to keep
-            unpacked trees for all of the 2.6.x/3.x releases.
+            unpacked trees for all of the releases since Linux 2.6.0.
             These trees can be inspected to look at
             differences across kernel versions.
             <br>
@@ -152,27 +148,7 @@ Maintaining Linux <em>man-pages</em>
             <!-- https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/ -->
             <pre class="shell">$ <strong>git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git linux</strong></pre>
             Thereafter, just update the copy using <span class="func">git pull</span>.
-            <br>
-            <br>
-        </li>
-        <li>
-            Keep a directory that contains every minor release patch ever made
-            (e.g., patch-2.6.15, patch-2.6.0, patch-2.5.38, patch-2.4.1,
-            patch-2.4.0-test7, patch-1.2.16, etc.).
-            Grepping these patches can help determine in which minor release a kernel
-            change occurred.
-            For example, you can use the following to see when
-            <span class="func">epoll_create()</span>
-            was added as a system call:
-            <pre class="shell">$ <strong>grep 'epoll_create' patch-*</strong></pre>
-        </li>
-        <li>
-            Keep all the kernel ChangeLogs too.
-            They can be inspected to look for explanations of patches found
-            via grepping as described in the previous point.
-        </li>
-
-    </ul>
+    </p>
 
     <p>
         For browsing the kernel source code,
@@ -186,39 +162,13 @@ Maintaining Linux <em>man-pages</em>
 <h3>Glibc source code</h3>
 
     <p>
-        Same story as the kernel:
-    </p>
-
-    <ul>
-        <li>
-            Keep up-to-date trees for all 2.x, x &lt; 0, releases.
-        </li>
-    
-        <li>
-            Keep
-            <span class="cmd">diff</span>
-            files for all minor releases of the glibc tree.
-            As with the kernel, these can be grepped to help determine
-            when a particular change occurred in glibc.
-        </li>
-    </ul>
-  
-    <p>
         A lot of glibc tarballs can be found at
         <a href="http://ftp.gnu.org/gnu/glibc/">http://ftp.gnu.org/gnu/glibc/</a>.
         Many older tarballs can be found at
         <a href="ftp://ftp.win.tue.nl/pub/linux-local/libc.archive/">ftp://ftp.win.tue.nl/pub/linux-local/libc.archive/</a>.
-        Snapshots of the latest glibc development tree can be obtained via git:
+        A copy of the latest glibc development tree can be obtained via git:
     </p>
     <pre class="shell">git clone git://sourceware.org/git/glibc.git </pre>
-
-    <p>
-        To obtain the code of a particular glibc release,
-        use a command such as the following to check out that release from the
-        git repository cloned in the previous command
-        (here, getting the source of glibc 2.10):
-    </p>
-    <pre class="shell"> git checkout glibc-2.10 </pre>
 
 
 
