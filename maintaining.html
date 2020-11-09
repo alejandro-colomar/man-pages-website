@@ -193,8 +193,70 @@ Maintaining Linux <em>man-pages</em>
         One of the biggest challenges is keeping up to date with changes in
         the kernel and glibc. 
         There are a few ways to do this.
+	This section lists the things I find most useful.
     </p>
 
+
+<h3>Websites</h3>
+
+    <p>
+        These websites are useful because they in part include attempts
+        by others to summarize changes to the Linux kernel.
+    </p>
+
+    <ul>
+        <li>
+            <a href="https://lwn.net/">https://lwn.net/</a>.
+            The weekly kernel page is especially useful, since it summarizes
+            a lot of current and planned changes to the kernel.
+	    There is also a
+	    <a href="https://lwn.net/Kernel/Patches">kernel patch page</a>
+	    where the LWN.net editors attempt to filter some
+	    of the more noteworthy patches.
+            <br>
+            <br>
+        </li>
+    
+        <li>
+            <a href="https://wiki.kernelnewbies.org/LinuxChanges">https://wiki.kernelnewbies.org/LinuxChanges</a>.
+            Summarizes major internal and interface changes for each
+            kernel release (starting sometime in the 2.6.x series).
+            <br>
+            <br>
+        </li>
+    </ul>
+
+<h3>Linux API mailing list</h3>
+
+    <p>
+        The <a href="linux-api-ml.html">linux-api mailing list</a>
+        (<span class="email">linux-api@vger.kernel.org</span>)
+        discusses
+        changes that affect the Linux programming interface</a>
+        (API or ABI).
+        In theory, all patches that change the interface should be CCed to this list.
+        To subscribe, send a message containing the
+        following <em>body</em> to
+        <span class="email">majordomo@vger.kernel.org</span>:
+    </p>
+
+    <pre>    subscribe linux-api </pre>
+
+    <p>
+        An archive of this list can be found on
+        <a href="https://lore.kernel.org/linux-api/">lore.kernel.org</a>.
+    </p>
+
+
+<h2>Keeping up&mdash;some other possibilities</h2>
+
+<p>
+   Below are some other ways of trying to discover changes in the
+   kernel and glibc. There's way too much information to track
+   (in particular, it's pretty much impossible to track all of
+   of the mailing lists), but I keep this list as a way
+   of reminding myself of where useful pieces of info could be found.
+</p>
 
 <h3>Looking ahead: <em>linux-next</em></h3>
 
@@ -217,29 +279,6 @@ Maintaining Linux <em>man-pages</em>
 
 
 <h3>Mailing lists</h3>
-
-    <p>
-        <strong>Linux API</strong>
-    </p>
-
-    <p>
-        The <a href="linux-api-ml.html">linux-api mailing list</a>
-        (<span class="email">linux-api@vger.kernel.org</span>)
-        discusses
-        changes that affect the Linux programming interface</a>
-        (API or ABI).
-        In theory, all patches that change the interface should be CCed to this list.
-        To subscribe, send a message containing the
-        following <em>body</em> to
-        <span class="email">majordomo@vger.kernel.org</span>:
-    </p>
-
-    <pre>    subscribe linux-api </pre>
-
-    <p>
-        An archive of this list can be found on
-        <a href="https://lore.kernel.org/linux-api/">lore.kernel.org</a>.
-    </p>
 
     <p>
         <strong>Linux Kernel (LKML)</strong>
@@ -396,36 +435,6 @@ subscribe linux-net in the message body to majordomo@vger.kernel.org
         There is a list archive
         <a href="https://sourceware.org/pipermail/libc-help/">here</a>.
     </p>
-
-
-<h3>Websites</h3>
-
-    <p>
-        These websites are useful because they in part include attempts
-        by others to summarize changes to the Linux kernel.
-    </p>
-
-    <ul>
-        <li>
-            <a href="https://lwn.net/">https://lwn.net/</a>.
-            The weekly kernel page is especially useful, since it summarizes
-            a lot of current and planned changes to the kernel.
-	    There is also a
-	    <a href="https://lwn.net/Kernel/Patches">kernel patch page</a>
-	    where the LWN.net editors attempt to filter some
-	    of the more noteworthy patches.
-            <br>
-            <br>
-        </li>
-    
-        <li>
-            <a href="https://wiki.kernelnewbies.org/LinuxChanges">https://wiki.kernelnewbies.org/LinuxChanges</a>.
-            Summarizes major internal and interface changes for each
-            kernel release (starting sometime in the 2.6.x series).
-            <br>
-            <br>
-        </li>
-    </ul>
 
 
 <!--
