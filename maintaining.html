@@ -841,32 +841,30 @@ subscribe linux-net in the message body to majordomo@vger.kernel.org
     </ul>
 
 
-<h2>Being a good free software citizen</h2>
 
-
-<h3>Reporting kernel and glibc bugs</h3>
+<h2>Reporting kernel and glibc bugs</h2>
     <p>
         Testing kernel and glibc features while writing man pages will
-        inevitably uncover bugs.
-        Report them.
+        inevitably uncover bugs, which ideally should be reported.
     </p>
 
     <p>
-        For the kernel, a report can either go into the
-        <a href="https://bugzilla.kernel.org/">kernel bugzilla</a>,
-        or, if the report is of general interest
-        (e.g., a significant bug in a new system call), it may be worthwhile
-        submitting a note to the relevant developer
-        (e.g., the author of the system call) and CCing LKML
-        (<span class="email">linux-kernel@vger.kernel.org</span>).
+        For the kernel, the most effective way to report bugs
+        (e.g., in a new system call)
+	is typically to send an email to the developers of the API
+        with a CC to LKML
+        (<span class="email">linux-kernel@vger.kernel.org</span>)
+	or another relevant list.
+	Alternatively, you can try making a bug report in the
+        <a href="https://bugzilla.kernel.org/">kernel bugzilla</a>.
     </p>
 
     <p>
-        Bug reports for glibc go here:
-        <a href="https://sourceware.org/bugzilla">https://sourceware.org/bugzilla</a>.
-        This is also the place for bug reports for glibc
-        <span class="man-page">info(1)</span>
-        documents.
+        For information about reporting glibc bugs (including errors
+	in the glibc
+        <span class="man-page">info(1)</span> documentation),
+	see
+        <a href="https://sourceware.org/glibc/wiki/FilingBugs">https://sourceware.org/glibc/wiki/FilingBugs</a>.
     </p>
   
 
