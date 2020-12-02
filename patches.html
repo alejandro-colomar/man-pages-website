@@ -48,27 +48,30 @@ patches |
 </p>
 <ul>
     <li>
-        Put <span class="email">mtk.manpages@gmail.com</span> in "To:".
-	(Please do <strong>not</strong> CC my
-	<span class="email">@man7.org</span> email address.)
-    </li>
-    <li>
-        Put <span class="email">linux-man@vger.kernel.org</span> into "CC:"
+        Put <span class="email">linux-man@vger.kernel.org</span>
+	into "To:" or "CC:"
       (<a href="linux-man-ml.html"><em>no HTML mail please</em></a>),
     </li>
     <li>
         Include the string "[patch]" in the subject line
     </li>
+    <li>
+        Include either or both comaintainers
+        (Alejandro Colomar <span class="email">&lt;alx.manpages@gmail.com&gt;</span>
+	and
+        Michael Kerrisk <span class="email">&lt;mtk.manpages@gmail.com&gt;</span>)
+	in "To:" or "CC:".
+	(Please do <strong>not</strong> CC mtk's
+	<span class="email">@man7.org</span> email address.)
+    </li>
 </ul>
 
 
 <p>
-  <strong>The above is the minimum needed to ensure that
-  there's some chance I'll see the patch.</strong>
-  (If you did that, and I do not respond, then ping the mail thread,
-  "replying to all".
-  Unfortunately, I get more mail than I can sometimes deal with,
-  and things do get lost.)
+  <strong>The above is the minimum needed so that someone
+  might respond to your patch.</strong>
+  (If you did that, and someone does not respond within a few days,
+  then ping the mail thread, "replying to all".)
 </p>
 <p>
   <strong>To make your patch even more useful</strong>,
@@ -167,7 +170,7 @@ patches |
 
   <li>
     For <strong>trivial patches</strong>,
-    I use a number of keywords that are processed by
+    the project uses a number of keywords that are processed by
     scripts that automatically build the release changelogs.
     Please employ the following in the patch subject line,
     where appropriate:
@@ -197,7 +200,8 @@ patches |
   </li>
 
   <li>
-    <strong>Some general tips</strong> on how to make my life easier:
+    <strong>Some general tips</strong> on how to make life easier
+    for the maintainers:
       <br>
       <br>
   </li>
@@ -291,8 +295,8 @@ patches |
       <br>
     </li>
     <li>
-      You don't need to update the page timestamp (".TH" line).
-      My release scripts do that automatically.
+      You don't need to update the page timestamp (".TH" line);
+      the project release scripts do that automatically.
     </li>
   </ul>
 
