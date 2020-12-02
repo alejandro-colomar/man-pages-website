@@ -57,9 +57,6 @@ Linux <em>man-pages</em>: &nbsp;
             <a href="#new_markup">Design and adopt a new mark-up language (?)</a>
         </li>
         <li>
-	    <a href="#global_ffix">Global formatting fixes</a>
-        </li>
-        <li>
             <a href="#style_guide">Devise or adopt a style guide</a>
         </li>
     </ul>
@@ -313,35 +310,6 @@ Linux <em>man-pages</em>: &nbsp;
 	(Since the kernel documentation's moce to Sphinx,
 	that tool is the obvious choice to consider for this task.)
     </p>
-
-<hr>
-
-<a name="global_ffix"></a>
-<h2>Global formatting fixes</h2>
-
-    <p>
-        There are various global formatting fixes that should be made
-	(or at least considered):
-    </p>
-
-    <ul>
-        <li>
-	    Blank lines in natural language text in the page sources
-	    should be replaced by .PP or .IP directives.
-	    This produces better PostScript and PDF output,
-	    since blank lines generate a large vertical space.
-	    (The problem can be seen by using
-     	    <span class="func">gs(1)</span> to view the
-	    PostScript output produced by
-	    <span class="const">man -Tps</a>.)
-        </li>
-        <li>
-	    Consider using the .EX/.EE macros around
-	    code samples and shell scripts,
-	    to have code rendered in a fixed-width font
-	    for PostScript/PDF output.
-        </li>
-    </ul>
 
 <hr>
 
