@@ -42,7 +42,7 @@ patches |
 <h1>Patches for <em>man-pages</em></h1>
 
 <p>
-  If you know how to fix a problem in a man page (if not, look
+  If you know how to fix a problem in a manual page (if not, look
   <a href="reporting_bugs.html">here</a>), then send a patch,
   and <strong>make sure that you</strong>:
 </p>
@@ -184,7 +184,7 @@ patches |
         <strong>tfix</strong>: Typo fix.
       </li>
       <li>
-        <strong>srcfix</strong>: Change to man page source that
+        <strong>srcfix</strong>: Change to manual page source that
 	doesn't affect formatted output.
       </li>
       <li>
@@ -222,13 +222,12 @@ patches |
       <em>groff</em>
       are pretty simple, and you can probably learn as much as you need
       by just looking at the source of the page to be patched;
-      see also the
-      <span class="man-page">groff_man(7)</span>
+      for more information, take a look at the
+      <span class="man-page"><a href="https://man7.org/linux/man-pages/man7/groff_man.7.html">groff_man(7)</a></span>,
+      <span class="man-page"><a href="https://man7.org/linux/man-pages/man7/groff_man_style.7.html">groff_man_style(7)</a></span>,
       and
-      <span class="man-page">
-      <a href="https://man7.org/linux/man-pages/man7/man-pages.7.html">man-pages(7)</a>
-      </span>
-      man pages.
+      <span class="man-page"><a href="https://man7.org/linux/man-pages/man7/man-pages.7.html">man-pages(7)</a></span>
+      manual pages.
       If you are uncertain of
       <em>groff</em>,
       then send a patch that uses some plain text.
@@ -237,14 +236,14 @@ patches |
     </li>
   
     <li>
-      <strong>Make patches against the latest version of the man page</strong>.
+      <strong>Make patches against the latest version of the manual page</strong>.
       For information on downloading the latest tarball, or pulling from the 
       <em>man-pages</em>
       <a href="https://git-scm.com/">Git</a> repository, see the
       <a href="download.html">download</a> page.
     
       <blockquote>
-        If the man page that you want to patch is not in the tarball or
+        If the manual page that you want to patch is not in the tarball or
         Git repository,
         that's because it comes from a package other than <em>man-pages</em>;
         in that case, you should look
@@ -265,8 +264,9 @@ patches |
       <strong>Send patches in
       <span class="cmd">diff -u</span>
       format</strong>; inline inside the mail message
-      is usually best. If it is a very long patch, then send it both inline
-      and as an attachment.
+      is usually best.
+      If you're worried about your mailer breaking the patch,
+      then send it both inline and as an attachment.
       Since the
       <em>man-pages</em>
       project
